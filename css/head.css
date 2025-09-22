@@ -1,0 +1,183 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: white;
+  border-bottom: 2px solid gray;
+}
+
+.nav_container {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+  background-color: white;
+  padding: 0 20px;
+}
+
+.logo {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.highlight {
+  color: #ef233c;
+}
+
+.explore {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin-left: 40px;
+}
+
+.explore input {
+  width: 100%;
+  height: 35px;
+  padding-left: 35px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #333;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: gray;
+  font-size: 14px;
+}
+
+.location {
+  position: relative;
+  width: 200px;
+}
+
+.location input {
+  width: 100%;
+  height: 35px;
+  padding-left: 35px;
+  border-radius: 10px;
+  background-color: #f4f4f4;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #333;
+}
+
+.location-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: gray;
+  font-size: 16px;
+}
+
+.letterspacing:hover {
+  transform: translateY(-5px);
+}
+
+.home, .wishlist a, .profile a {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: #2f3b52;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.home i, .wishlist i, .profile i {
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+.notifyicon {
+  font-size: 24px;
+  color: #0b0d18;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.left_nav {
+  flex: 1;
+}
+
+.middle_nav {
+  flex: 2;
+}
+
+.right_nav {
+  flex: 3;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
+
+.hamburger {
+  display: none;
+}
+
+/* Responsive Tablet */
+@media (max-width: 768px) {
+  .nav_container {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 15px 10px;
+  }
+
+  .right_nav {
+    display: none;
+  }
+
+  .left_nav,
+  .middle_nav {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    margin-bottom: 10px;
+  }
+
+  .explore {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .hamburger {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 20px;
+  }
+}
+
+/* Responsive Mobile */
+@media (max-width: 426px) {
+  .explore {
+    width: 90%;
+  }
+
+  .left_nav,
+  .middle_nav {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+  }
+}

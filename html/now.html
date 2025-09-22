@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paws & Claws - Your Premium Pet Marketplace</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter for clean typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons for crisp SVG icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff; /* Pure white background */
+            color: #333333; /* Darker text for clear readability */
+        }
+        /* Custom styling for the hero section background effect */
+        .hero-section {
+            background-image: url('https://placehold.co/1920x700/D0E0E3/333333?text=Your%20Perfect%20Pets'); /* Brighter, more neutral placeholder for diverse pets */
+            background-size: cover;
+            background-position: center;
+            height: 700px; /* Taller hero for impact */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff; /* White text for hero content */
+            position: relative;
+            animation: fadeInBackground 2s ease-out; /* Subtle fade-in animation */
+        }
+
+        /* Animation for background */
+        @keyframes fadeInBackground {
+            from { opacity: 0.8; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Card image styling */
+        .card-image {
+            width: 100%;
+            height: 180px; /* Consistent height for cards */
+            object-fit: cover;
+            border-radius: 0.75rem; /* More rounded corners */
+        }
+
+        /* Testimonial carousel styles */
+        .testimonial-carousel {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .testimonial-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .testimonial-item {
+            min-width: 100%;
+            flex-shrink: 0;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* Hide scrollbar for smooth carousel */
+        .testimonial-carousel::-webkit-scrollbar {
+            display: none;
+        }
+        .testimonial-carousel {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+
+        /* Basic scroll-to-top button styling */
+        #scrollToTopBtn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed position */
+            bottom: 20px; /* Place at the bottom */
+            right: 20px; /* Place at the right */
+            z-index: 99; /* High z-index to be on top */
+            background-color: #ef4444; /* Match the red button color */
+            color: white; /* White text */
+            border: none;
+            border-radius: 50%; /* Circular button */
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: #dc2626; /* Slightly darker on hover */
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm p-4 sticky top-0 z-50">
+        <nav class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a href="#" class="text-3xl font-extrabold text-gray-900 rounded-lg p-2 hover:bg-gray-50 transition-colors">
+                    <span class="text-red-500">Paws</span>&<span class="text-gray-700">Claws</span>
+                </a>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="relative flex-grow w-full md:w-auto max-w-lg">
+                <input
+                    type="text"
+                    placeholder="Search for anything..."
+                    class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent transition-all duration-200 bg-white text-gray-700 placeholder-gray-400"
+                >
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i data-lucide="search" class="h-5 w-5 text-gray-400"></i>
+                </div>
+            </div>
+
+            <!-- Navigation Icons & Buttons -->
+            <div class="flex items-center space-x-4">
+                <a href="#" class="flex items-center text-gray-700 hover:text-red-500 transition-colors rounded-full p-2 hover:bg-gray-100 group">
+                    <i data-lucide="map-pin" class="h-6 w-6 group-hover:scale-105 transition-transform"></i>
+                    <span class="hidden md:block ml-1 text-sm font-medium">Location</span>
+                </a>
+                <a href="#" class="text-gray-700 hover:text-red-500 transition-colors rounded-full p-2 hover:bg-gray-100 group">
+                    <i data-lucide="shopping-cart" class="h-6 w-6 group-hover:scale-105 transition-transform"></i>
+                </a>
+                <a href="#" class="text-gray-700 hover:text-red-500 transition-colors rounded-full p-2 hover:bg-gray-100 group">
+                    <i data-lucide="user" class="h-6 w-6 group-hover:scale-105 transition-transform"></i>
+                </a>
+                <button class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-offset-2 ml-4">
+                    Sign Up / Log In
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="flex-grow">
+        <section class="hero-section">
+            <div class="hero-content max-w-4xl px-4 relative z-10">
+                <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6 leading-tight drop-shadow-md animate-fade-in-up">
+                    Find Your New Best Friend Today
+                </h1>
+                <p class="text-lg sm:text-xl md:text-2xl font-medium mb-8 drop-shadow-sm animate-fade-in-up delay-200">
+                    Connecting pet lovers with their ideal companions and essential supplies seamlessly.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in-up delay-400">
+                    <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-offset-2 text-lg hero-cta" data-action="find-pet">
+                        Explore Pets
+                    </button>
+                    <button class="bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 text-lg hero-cta" data-action="sell-product">
+                        Become a Seller
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Cards Section -->
+        <section class="container mx-auto px-4 py-16 bg-white rounded-xl shadow-inner my-8">
+            <h2 class="text-4xl font-extrabold text-gray-800 text-center mb-12">Discover Our Categories</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Pet Card -->
+                <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 flex flex-col items-center text-center group transform hover:-translate-y-2 border border-gray-100">
+                    <div class="p-4 bg-red-50 rounded-full mb-4 group-hover:bg-red-100 transition-colors">
+                        <i data-lucide="heart" class="h-10 w-10 text-red-500 group-hover:text-red-600 transition-colors"></i>
+                    </div>
+                    <img src="https://placehold.co/350x180/eff7fb/444?text=Adorable%20Pets" alt="Pets" class="card-image mb-6">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Pets</h3>
+                    <p class="text-gray-600 mb-6">Find your ideal companion, from playful puppies to exotic birds.</p>
+                    <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2.5 px-6 rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-offset-2 category-button">
+                        Browse Pets
+                    </button>
+                </div>
+
+                <!-- Accessories Card -->
+                <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 flex flex-col items-center text-center group transform hover:-translate-y-2 border border-gray-100">
+                    <div class="p-4 bg-gray-100 rounded-full mb-4 group-hover:bg-gray-200 transition-colors">
+                        <i data-lucide="tag" class="h-10 w-10 text-gray-700 group-hover:text-gray-800 transition-colors"></i>
+                    </div>
+                    <img src="https://placehold.co/350x180/e6e6e6/444?text=Stylish%20Accessories" alt="Accessories" class="card-image mb-6">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Pet Accessories</h3>
+                    <p class="text-gray-600 mb-6">Explore a wide range of toys, collars, beds, and grooming essentials.</p>
+                    <button class="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2.5 px-6 rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 category-button">
+                        Shop Accessories
+                    </button>
+                </div>
+
+                <!-- Pet Food Card -->
+                <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 flex flex-col items-center text-center group transform hover:-translate-y-2 border border-gray-100">
+                    <div class="p-4 bg-yellow-50 rounded-full mb-4 group-hover:bg-yellow-100 transition-colors">
+                        <i data-lucide="pizza" class="h-10 w-10 text-yellow-500 group-hover:text-yellow-600 transition-colors"></i>
+                    </div>
+                    <img src="https://placehold.co/350x180/fffbe0/444?text=Nutritious%20Food" alt="Pet Food" class="card-image mb-6">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Pet Food</h3>
+                    <p class="text-gray-600 mb-6">Premium food brands and diet options for your pet's health and happiness.</p>
+                    <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2.5 px-6 rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 category-button">
+                        Buy Food
+                    </button>
+                </div>
+
+                <!-- Pet Care Card -->
+                <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 flex flex-col items-center text-center group transform hover:-translate-y-2 border border-gray-100">
+                    <div class="p-4 bg-purple-50 rounded-full mb-4 group-hover:bg-purple-100 transition-colors">
+                        <i data-lucide="syringe" class="h-10 w-10 text-purple-500 group-hover:text-purple-600 transition-colors"></i>
+                    </div>
+                    <img src="https://placehold.co/350x180/f7eefc/444?text=Expert%20Pet%20Care" alt="Pet Care" class="card-image mb-6">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Pet Care</h3>
+                    <p class="text-gray-600 mb-6">Connect with vets, groomers, and trainers for the best care.</p>
+                    <button class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2.5 px-6 rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:ring-offset-2 category-button">
+                        Find Pet Services
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="bg-gray-50 text-gray-800 py-16">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl font-extrabold mb-12 animate-fade-in">How It Works</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="flex flex-col items-center animate-fade-in delay-100 bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                        <div class="p-4 bg-gray-100 text-gray-700 rounded-full mb-4 shadow-lg">
+                            <i data-lucide="mouse-pointer-2" class="h-12 w-12"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3">1. Browse & Discover</h3>
+                        <p class="text-gray-600 text-lg">Explore a vast selection of pets and products from trusted sellers.</p>
+                    </div>
+                    <div class="flex flex-col items-center animate-fade-in delay-200 bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                        <div class="p-4 bg-gray-100 text-gray-700 rounded-full mb-4 shadow-lg">
+                            <i data-lucide="message-square" class="h-12 w-12"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3">2. Connect Directly</h3>
+                        <p class="text-gray-600 text-lg">Chat with sellers, ask questions, and arrange purchase details.</p>
+                    </div>
+                    <div class="flex flex-col items-center animate-fade-in delay-300 bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                        <div class="p-4 bg-gray-100 text-gray-700 rounded-full mb-4 shadow-lg">
+                            <i data-lucide="home" class="h-12 w-12"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3">3. Welcome Home</h3>
+                        <p class="text-gray-600 text-lg">Seamlessly complete your transaction and enjoy your new pet or product.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial/Rating Section (with Carousel) -->
+        <section class="bg-white py-16">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl font-extrabold text-gray-900 mb-12">Hear From Our Happy Customers</h2>
+                <div class="max-w-4xl mx-auto bg-gray-50 rounded-3xl shadow-xl p-8 lg:p-12 relative border border-gray-100">
+                    <div class="testimonial-carousel">
+                        <div class="testimonial-container" id="testimonialContainer">
+                            <!-- Testimonial 1 -->
+                            <div class="testimonial-item">
+                                <p class="text-gray-700 text-xl italic mb-6 leading-relaxed">
+                                    "Paws & Claws made finding my new rescue dog a joyous and incredibly efficient experience. The sellers were genuine, and the communication was seamless. Highly recommend to all pet lovers!"
+                                </p>
+                                <div class="flex items-center justify-center mb-4">
+                                    <i data-lucide="star" class="h-6 w-6 text-yellow-400 fill-yellow-400"></i>
+                                    <i data-lucide="star" class="h-6 w-6 text-yellow-400 fill-yellow-400"></i>
+                                    <i data-lucide="star" class="h-6 w-6 text-yellow-400 fill-yellow-400"></i>
+                                    <i data-lucide="star" class="h-6 w-6 text-yellow-400 fill-yellow-400"></i>
+                                    <i data-lucide="star" class="h-6 w-6 text-yellow-400 fill-yellow-400"></i>
+                                </div>
+                                <p class="font-bold text-gray-800 text-lg">- Maya S., Pet Parent</p>
+                            </div>
+                            <!-- Testimonial 2 -->
+                            <div class="testimonial-item">
+                                <p class="text-gray-700 text-xl italic mb-6 leading-relaxed">
+                                    "As a small breeder, Paws & Claws has revolutionized how I connect with potential pet owners. The platform is intuitive, and I've been able to find wonderful homes for my puppies much faster."
+                                </p>
+                                <div class="flex items-center justify-center mb-4">
+                                    <i data-lucide="star" class="h-6 w-6 text-yellow-400 fill-yellow-400"></i>
+                                    <i data-lucide="star" class="h-6 w-6 text-yellow-400 fill-yellow-400"></i>
+                                    <i data-lucide="star" class="h-6 w-6 text-yellow-400 fill-yellow-400"></i>
+                                    <i data-lucide="star" class="h-6 w-6 text-yellow-400 fill-yellow-400"></i>
+                                    <i data-lucide="star" class="h-6 w-6 text-yellow-200 fill-yellow-200"></i>
+                                </div>
+                                <p class="font-bold text-gray-800 text-lg">- John D., Verified Seller</p>
+                            </div>
+                            <!-- Testimonial 3 -->
+                            <div class="testimonial-item">
+                                <p class="text-gray-700 text-xl italic mb-6 leading-relaxed">
+                                    "No more wasting time driving to multiple pet stores! I found the exact brand of specialized cat food I needed within minutes on Paws & Claws. A true time-saver!"
+                                </p>
+                                <div class="flex items-center justify-center mb-4">
+                                    <i data-lucide="star" class="h-6 w-6 text-yellow-400 fill-yellow-400"></i>
+                                    <i data-lucide="star" class="h-6 w-6 text-yellow-400 fill-yellow-400"></i>
+                                    <i data-lucide="star" class="h-6 w-6 text-yellow-400 fill-yellow-400"></i>
+                                    <i data-lucide="star" class="h-6 w-6 text-yellow-400 fill-yellow-400"></i>
+                                    <i data-lucide="star" class="h-6 w-6 text-yellow-400 fill-yellow-400"></i>
+                                </div>
+                                <p class="font-bold text-gray-800 text-lg">- Sarah L., Pet Supply Buyer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carousel Navigation -->
+                    <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-gray-100 hover:bg-gray-200 p-3 rounded-full shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-gray-300">
+                        <i data-lucide="chevron-left" class="h-6 w-6 text-gray-600"></i>
+                    </button>
+                    <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-gray-100 hover:bg-gray-200 p-3 rounded-full shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-gray-300">
+                        <i data-lucide="chevron-right" class="h-6 w-6 text-gray-600"></i>
+                    </button>
+                    <!-- Indicators -->
+                    <div class="flex justify-center mt-6 space-x-2" id="carouselIndicators">
+                        <span class="w-3 h-3 bg-gray-300 rounded-full cursor-pointer hover:bg-gray-400 transition-colors current-slide-indicator" data-slide="0"></span>
+                        <span class="w-3 h-3 bg-gray-300 rounded-full cursor-pointer hover:bg-gray-400 transition-colors" data-slide="1"></span>
+                        <span class="w-3 h-3 bg-gray-300 rounded-full cursor-pointer hover:bg-gray-400 transition-colors" data-slide="2"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Call to Action -->
+        <section class="bg-red-50 py-16 text-gray-800 text-center">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl sm:text-5xl font-extrabold mb-6 leading-tight">Ready to Find Your Companion?</h2>
+                <p class="text-xl sm:text-2xl mb-8 opacity-90">Join Paws & Claws today and simplify your pet journey.</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <button class="bg-red-500 text-white font-bold py-3.5 px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-offset-2 text-lg">
+                        Get Started Now!
+                    </button>
+                    <a href="#" class="text-gray-700 hover:text-gray-900 underline flex items-center justify-center text-lg">
+                        Learn More <i data-lucide="arrow-right" class="ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-gray-300 py-10 border-t border-gray-700">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- About Us -->
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4">Paws & Claws</h3>
+                <p class="text-sm">Your trusted marketplace for connecting pet lovers with their ideal companions and essential supplies. We're dedicated to simplifying your pet journey.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4">Quick Links</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-red-400 transition-colors">About Us</a></li>
+                    <li><a href="#" class="hover:text-red-400 transition-colors">How It Works</a></li>
+                    <li><a href="#" class="hover:text-red-400 transition-colors">FAQ</a></li>
+                    <li><a href="#" class="hover:text-red-400 transition-colors">Blog</a></li>
+                </ul>
+            </div>
+
+            <!-- Categories -->
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4">Categories</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-red-400 transition-colors">Pets for Adoption</a></li>
+                    <li><a href="#" class="hover:text-red-400 transition-colors">Pet Food & Treats</a></li>
+                    <li><a href="#" class="hover:text-red-400 transition-colors">Accessories & Toys</a></li>
+                    <li><a href="#" class="hover:text-red-400 transition-colors">Pet Care Services</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact & Social -->
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4">Connect With Us</h3>
+                <p class="text-sm mb-4">Email: <a href="mailto:info@pawsandclaws.com" class="hover:text-red-400 transition-colors">info@pawsandclaws.com</a></p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="facebook" class="h-6 w-6"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="twitter" class="h-6 w-6"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="instagram" class="h-6 w-6"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="linkedin" class="h-6 w-6"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-6 text-center text-sm text-gray-500">
+            &copy; 2025 Paws & Claws. All rights reserved. | Designed with ❤️
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" aria-label="Scroll to top">
+        <i data-lucide="chevron-up"></i>
+    </button>
+
+    <!-- JavaScript for Interactions -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Lucide icons
+            lucide.createIcons();
+
+            console.log('Paws & Claws homepage fully loaded!');
+
+            // --- Hero CTA Buttons Interaction ---
+            const heroCTAs = document.querySelectorAll('.hero-cta');
+            heroCTAs.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const action = event.target.dataset.action;
+                    // Using a simple message box for demonstration.
+                    const messageBox = document.createElement('div');
+                    messageBox.classList.add('fixed', 'top-1/2', 'left-1/2', '-translate-x-1/2', '-translate-y-1/2', 'bg-white', 'p-6', 'rounded-lg', 'shadow-xl', 'z-[100]', 'text-center');
+                    messageBox.innerHTML = `
+                        <p class="text-lg font-semibold mb-4 text-gray-800">Action: ${action.replace('-', ' ').toUpperCase()} button clicked!</p>
+                        <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md" onclick="this.parentNode.remove()">OK</button>
+                    `;
+                    document.body.appendChild(messageBox);
+                });
+            });
+
+            // --- Category Buttons Interaction ---
+            const categoryButtons = document.querySelectorAll('.category-button');
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const categoryText = event.target.textContent;
+                    // Using a simple message box for demonstration.
+                    const messageBox = document.createElement('div');
+                    messageBox.classList.add('fixed', 'top-1/2', 'left-1/2', '-translate-x-1/2', '-translate-y-1/2', 'bg-white', 'p-6', 'rounded-lg', 'shadow-xl', 'z-[100]', 'text-center');
+                    messageBox.innerHTML = `
+                        <p class="text-lg font-semibold mb-4 text-gray-800">Navigating to: ${categoryText}</p>
+                        <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md" onclick="this.parentNode.remove()">OK</button>
+                    `;
+                    document.body.appendChild(messageBox);
+                });
+            });
+
+            // --- Testimonial Carousel Logic ---
+            const testimonialContainer = document.getElementById('testimonialContainer');
+            const testimonialItems = document.querySelectorAll('.testimonial-item');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const indicatorsContainer = document.getElementById('carouselIndicators');
+            let currentIndex = 0;
+
+            const indicators = indicatorsContainer.querySelectorAll('span');
+
+            function updateCarousel() {
+                const itemWidth = testimonialItems[0].clientWidth;
+                testimonialContainer.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
+
+                indicators.forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add('bg-red-400', 'w-4', 'h-4'); /* Lighter active indicator */
+                        indicator.classList.remove('bg-gray-300', 'w-3', 'h-3');
+                    } else {
+                        indicator.classList.add('bg-gray-300', 'w-3', 'h-3');
+                        indicator.classList.remove('bg-red-400', 'w-4', 'h-4');
+                    }
+                });
+            }
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % testimonialItems.length;
+                updateCarousel();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + testimonialItems.length) % testimonialItems.length;
+                updateCarousel();
+            });
+
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+
+            updateCarousel();
+            window.addEventListener('resize', updateCarousel);
+
+            // --- Scroll to Top Button Logic ---
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+            window.onscroll = function() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    scrollToTopBtn.style.display = "flex";
+                } else {
+                    scrollToTopBtn.style.display = "none";
+                }
+            };
+
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

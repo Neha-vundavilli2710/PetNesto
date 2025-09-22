@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 300px;
+}
+
+.carousel-track {
+  display: flex;
+  width: 300%; /* 4 slides */
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  width: 100svw;
+  height: 250px;
+}
+.slide img {
+  width: 100%;
+  height: 250px;
+}
+
+/* Arrows */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255,255,255,0.5);
+  border: none;
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 2;
+  border-radius: 50%;
+}
+
+.nav-btn.left {
+  left: 10px;
+}
+
+.nav-btn.right {
+  right: 10px;
+}
+
+/* Progress Indicators */
+.progress-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.progress-bar {
+  width: 40px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.4);
+  overflow: hidden;
+  position: relative;
+  border-radius: 4px;
+}
+
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: white;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: none;
+}
+
+@keyframes fill {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@media(max-width: 426px) {
+    .carousel-container {
+     height: 100px;
+    }
+
+  .slide img {
+    height: 100px;
+  }
+  .nav-btn {
+    font-size: 10px;
+  }
+}
+@media(min-width: 426px) and (max-width: 768px) {
+   .carousel-container {
+     height: 150px;
+    }
+
+  .slide img {
+    height: 150px;
+  }
+  .nav-btn {
+    font-size: 20px;
+  }
+}
+

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetNesto Seller Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .header {
+            background-color: #212121;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .header .logo {
+            font-weight: bold;
+            font-size: 28px;
+            color: #ff4500; /* Orange color for logo */
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .dashboard-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .dashboard-section h2 {
+            color: #333;
+            margin-top: 0;
+            border-bottom: 2px solid #ff4500;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group textarea,
+        .form-group select {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .form-group input[type="file"] {
+            padding: 5px 0;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .button {
+            background-color: #ff4500;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .button:hover {
+            background-color: #e63e00;
+        }
+        .listing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .listing-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        .listing-item img {
+            max-width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .listing-item h3 {
+            margin: 10px 0 5px;
+            font-size: 18px;
+        }
+        .listing-item p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+        .listing-item .price {
+            font-weight: bold;
+            color: #ff4500;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .listing-actions {
+            margin-top: 15px;
+        }
+        .listing-actions .button {
+            padding: 8px 15px;
+            font-size: 14px;
+            margin: 0 5px;
+        }
+        .listing-actions .button.edit {
+            background-color: #007bff;
+        }
+        .listing-actions .button.edit:hover {
+            background-color: #0056b3;
+        }
+        .listing-actions .button.delete {
+            background-color: #dc3545;
+        }
+        .listing-actions .button.delete:hover {
+            background-color: #c82333;
+        }
+        .footer {
+            background-color: #212121;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">PetNesto</div>
+        <h1>Seller Dashboard</h1>
+        <nav class="nav-links">
+            <a href="#">My Listings</a>
+            <a href="#">Orders</a>
+            <a href="#">Queries</a>
+            <a href="#">Reports</a>
+            <a href="#">Profile</a>
+            <a href="#">Logout</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="dashboard-section">
+            <h2>Add New Listing</h2>
+            <form action="#" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="listing-type">Listing Type:</label>
+                    <select id="listing-type" name="listing_type">
+                        <option value="pet">Pet</option>
+                        <option value="food">Food</option>
+                        <option value="accessory">Accessory</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name/Title:</label>
+                    <input type="text" id="name" name="name" placeholder="e.g., Golden Retriever Puppy, Premium Dog Food" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" placeholder="Provide a detailed description of the pet or product." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price (INR):</label>
+                    <input type="number" id="price" name="price" step="0.01" min="0" placeholder="e.g., 15000.00" required>
+                </div>
+                <div class="form-group">
+                    <label for="stock">Stock Quantity:</label>
+                    <input type="number" id="stock" name="stock" min="0" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="images">Upload Images:</label>
+                    <input type="file" id="images" name="images[]" accept="image/*" multiple>
+                    <small>You can upload multiple images (JPEG, PNG).</small>
+                </div>
+                <button type="submit" class="button">Add Listing</button>
+            </form>
+        </section>
+
+        <section class="dashboard-section">
+            <h2>My Current Listings</h2>
+            <div class="listing-grid">
+                <div class="listing-item">
+                    <img src="https://via.placeholder.com/300x180/FFDDC1/808080?text=Golden+Retriever" alt="Golden Retriever Puppy">
+                    <h3>Golden Retriever Puppy</h3>
+                    <p>Breed: Golden Retriever</p>
+                    <p>Age: 3 months old</p>
+                    <p class="price">₹ 25,000</p>
+                    <div class="listing-actions">
+                        <button class="button edit">Edit</button>
+                        <button class="button delete">Delete</button>
+                    </div>
+                </div>
+
+                <div class="listing-item">
+                    <img src="https://via.placeholder.com/300x180/D1E7DD/808080?text=Premium+Dog+Food" alt="Premium Dog Food">
+                    <h3>Premium Adult Dog Food</h3>
+                    <p>Brand: PetPro</p>
+                    <p>Weight: 10kg bag</p>
+                    <p class="price">₹ 1,800</p>
+                    <div class="listing-actions">
+                        <button class="button edit">Edit</button>
+                        <button class="button delete">Delete</button>
+                    </div>
+                </div>
+
+                <div class="listing-item">
+                    <img src="https://via.placeholder.com/300x180/CCE5FF/808080?text=Pet+Travel+Carrier" alt="Pet Travel Carrier">
+                    <h3>Pet Travel Carrier</h3>
+                    <p>Size: Medium</p>
+                    <p>Durable plastic</p>
+                    <p class="price">₹ 1,200</p>
+                    <div class="listing-actions">
+                        <button class="button edit">Edit</button>
+                        <button class="button delete">Delete</button>
+                    </div>
+                </div>
+
+                </div>
+        </section>
+
+        </div>
+
+    <footer class="footer">
+        © 2025 Paws & Claws. All rights reserved. | Designed with ❤️
+    </footer>
+</body>
+</html>

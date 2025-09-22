@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deals Slider</title>
+  <link rel="stylesheet" href="../css/final.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div class="side-bar" id="sidebar">
+    <span onclick="closeSidebar()" id="icon">&times;</span>
+    <label><input type="checkbox" onclick="redirectToPage(this, 'all.html')"> Location</label>
+    <!-- <label><input type="checkbox" onclick="redirectToPage(this, 'dog.html')"> Home</label> -->
+    <label><input type="checkbox" onclick="redirectToPage(this, 'cat.html')"> Wishlist</label>
+    <label id="sidebarNotification"><input type="checkbox"> Notification</label>
+    <label><input type="checkbox" onclick="redirectToPage(this, '../html/profile.html')"> Profile</label>
+  </div>
+  <header>
+    <nav class="nav_container">
+      <div class="left_nav">
+        <div class="logo_hamburger">
+          <div class="logo">Pet<span class="highlight">Nesto</span>
+            <span class="hamburger" onclick="openSidebar()">
+              <i class="fas fa-bars"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="middle_nav">
+        <div class="explore">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="exploreInput" placeholder="Explore pets, pet food, accsories, petCare......." />
+        </div>
+      </div>
+      <div class="right_nav">
+        <div class="location">
+          <i class="fas fa-map-marker-alt location-icon"></i>
+          <input type="text" id="locationInput" placeholder="Select Location" />
+        </div>
+        <!-- <div class="home letterspacing">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </div> -->
+        <div class="wishlist letterspacing">
+          <a href="#">
+            <i class="fa-regular fa-heart"></i>
+            <span>Wishlist</span>
+          </a>
+        </div>
+        <!-- notification -->
+        <div class="notifyicon letterspacing">
+          <i class="fa-regular fa-bell" id="notificationBell"></i>
+        </div>
+
+        <!-- Notification Dropdown -->
+        <div class="notification-dropdown" id="notificationDropdown">
+          <div class="notification-header">
+            <h3>Notifications</h3>
+          </div>
+
+          <div class="notification-card">
+            <img src="../assests/dup_food/dog_puppy.jpeg" alt="Item 1" class="notification-item-image">
+            <div class="notification-content">
+              <p class="notification-title">Royal Canin Dog Food</p>
+              <p class="notification-message">Your requested item is back in stock!</p>
+              <a href="../assests/dup_food/royal_canin_cat.png" class="notification-link">View Item</a>
+            </div>
+          </div>
+
+          <div class="notification-card">
+            <img src="../assests/dup_accessories/dog2.jpg" alt="Item 2" class="notification-item-image">
+            <div class="notification-content">
+              <p class="notification-title">Feather Wand Cat Toy</p>
+              <p class="notification-message">Good news! Feather Wand Cat Toy is now available.</p>
+              <a href="../assests/dog_bed.png" class="notification-link">View Item</a>
+            </div>
+          </div>
+
+          <div class="notification-card">
+            <img src="../assests/dup_accessories/Aquarium_tanks.jpg" alt="Item 3" class="notification-item-image">
+            <div class="notification-content">
+              <p class="notification-title">Aquarium Starter Kit</p>
+              <p class="notification-message">Aquarium Starter Kit you wanted is back!</p>
+              <a href="../assests/dup_accessories/aqua_wish_tank.png" class="notification-link">View Item</a>
+            </div>
+          </div>
+
+          <div class="notification-footer">
+            <a href="#" class="notification-see-all">See All Notifications</a>
+          </div>
+        </div>
+
+        <div class="profile letterspacing">
+          <a href="../html/profile.html ">
+            <i class="fa-regular fa-user"></i>
+            <span>Profile</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- product-promo -->
+  <div class="promocard-container">
+    <!-- Navigation Arrows -->
+    <button class="nav-btn left" onclick="prevSlide()">&#10094;</button>
+
+    <!-- Slides -->
+    <div class="promocard-track">
+      <div class="slide">
+        <img src="../assests/promo_card1.png" alt="cracked">
+      </div>
+      <div class="slide">
+        <img src="../assests/promo_card2.png" alt="cracked">
+      </div>
+      <div class="slide">
+        <img src="../assests/promo_card3.png" alt="cracked">
+      </div>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <button class="nav-btn right" onclick="nextSlide()">&#10095;</button>
+
+    <!-- Progress Bar Indicators -->
+    <div class="progress-indicators">
+      <div class="progress-bar"></div>
+      <div class="progress-bar"></div>
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+  <!-- categories-section -->
+  <section class="categories-section">
+    <div class="categories_content">
+      <div class="categories_heading">
+        <h2>Discover Our Categories</h2>
+      </div>
+      <div class="category_grid" id="categoryGrid">
+        <div class="category_card" data-category="pets">
+          <div class="card_content">
+            <div class="card_content_img">
+              <img src="../assests/welcome_img2.png" alt="Pets" class="card_img">
+            </div>
+            <div class="card_subcontent">
+              <h3>Pets</h3>
+              <p>Find your ideal companion, from playful puppies to brexotic birds.</p>
+              <button class="category_button" onclick="window.location.href='./pets.html'">Browse Pets</button>
+            </div>
+          </div>
+        </div>
+        <div class="category_card" data-category="pet food">
+          <div class="card_content">
+            <div class="card_content_img">
+              <img src="../assests/dup_food/cat.jpeg" alt="Pet Food" class="card_img">
+            </div>
+            <div class="card_subcontent">
+              <h3>Pet Food</h3>
+              <p>Premium food brands and diet options for your pet's health and happiness.</p>
+              <button class="category_button" onclick="window.location.href='./food.html'">Browse Food</button>
+            </div>
+          </div>
+        </div>
+        <div class="category_card" data-category="pet accessories">
+          <div class="card_content">
+            <div class="card_content_img">
+              <img src="./Food_bowls.jpg" alt="Pet Accessories" class="card_img">
+            </div>
+            <div class="card_subcontent">
+              <h3>Pet Accessories</h3>
+              <p>Explore a wide range of toys, collars, beds, and grooming essentials.</p>
+              <button class="category_button" onclick="window.location.href='./all.html'">Browse Accessories</button>
+            </div>
+          </div>
+        </div>
+        <div class="category_card" data-category="pet care">
+          <div class="card_content">
+            <div class="card_content_img">
+              <img src="../assests/pet_care.jpg" alt="Pet Care" class="card_img">
+            </div>
+            <div class="card_subcontent">
+              <h3>Pet Care</h3>
+              <p>Connect with vets, groomers, and trainers for the best care.</p>
+              <button class="category_button" onclick="window.location.href='./allservice.html'">Browse Services</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="carousel-section">
+    <h2><span class="highlight">5000+</span> Happy Pet Owners</h2>
+    <p>have found their perfect companion or service on PetNesto</p>
+
+    <div class="carousel-wrapper">
+      <div class="carousel-track">
+        <div class="card"><img src="../assests/dup_pets/dog2.jpg" alt="Pet1">
+          <p>Rakesh - Adopted Golden Retriever</p>
+        </div>
+        <div class="card"><img src="../assests/dup_food/cat.jpeg" alt="Pet2">
+          <p>Sneha - Bought Persian Cat Food</p>
+        </div>
+        <div class="card"><img src="../assests/dup_accessories/bird_caze.jpg" alt="Pet3">
+          <p>Vikram - Bought a cage through PetNesto</p>
+        </div>
+        <div class="card"><img src="../assests/dup_accessories/dog1.jpg" alt="Pet4">
+          <p>Diya - Got Dog Accessories</p>
+        </div>
+        <div class="card"><img src="../assests/dup_pets/dog3.jpg" alt="Pet5">
+          <p>Arjun - Found a dog Shih Tzu</p>
+        </div>
+
+        <div class="card"><img src="./Pug.jpg" alt="Pet6">
+          <p>Kishor - Adopted Pug</p>
+        </div>
+        <div class="card"><img src="./pedigree_puppy.jpeg" alt="Pet7">
+          <p>Priya - Bought pedigree_puppy Food</p>
+        </div>
+        <div class="card"><img src="./Cat_Bed.jpg" alt="Pet8">
+          <p>Karan - Bought a cat bed through PetNesto</p>
+        </div>
+        <div class="card"><img src="./nesting_boxes.jpg" alt="Pet9">
+          <p>Megha - Nesting Box</p>
+        </div>
+        <div class="card"><img src="../assests/dup_pets/dog3.jpg" alt="Pet10">
+          <p>Sahil - Found a dog Shih Tzu</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer_grid">
+      <div class="footer_card">
+        <div class="footer_card_content">
+          <h2>PetNesto</h2>
+          <p>Your trusted marketplace for connecting pet lovers with their ideal companions and essential
+            supplies. We're dedicated to simplifying your pet journey.</p>
+        </div>
+      </div>
+      <div class="footer_card">
+        <div class="footer_card_content">
+          <h2>Quick Links</h2>
+          <div class="quick_links_content">
+            <div>About us</div>
+            <div>How it Works</div>
+            <div>FAQ</div>
+            <div>Blog</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer_card">
+        <div class="footer_card_content">
+          <h2>Categories</h2>
+          <div class="foot_category_content">
+            <div>Pets for Adoption</div>
+            <div>Pet Food & Treats</div>
+            <div>Accessories & Toys</div>
+            <div>Pet Care Services</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer_card">
+        <div class="footer_card_content">
+          <h2>Connect With Us</h2>
+          <div class="contact_content">
+            <div class="mail">Email: info@PetNesto.com</div>
+          </div>
+          <div class="social_media_icons">
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer_bottom">
+      <p> © 2025 Paws & Claws. All rights reserved. | Designed with❤️</p>
+    </div>
+  </footer>
+  <script src="../js/sidebar.js"></script>
+  <!-- <script src="../js/main.js"></script> -->
+  <script src="../js/product_promo.js"></script>
+  <script src="../js/category_prioritise.js"></script>
+  <script src="../js/notification.js"></script>
+</body>
+
+</html>

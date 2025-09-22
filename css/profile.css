@@ -1,0 +1,303 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: skyblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  width: 80%;
+  margin: 20px auto;
+  background-color: #FAFAFA;
+  border-radius: 30px;
+  overflow: hidden;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.w1 {
+  height: auto;
+  flex: 1 1 250px;
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 2px 2px skyblue;
+  margin-bottom: 20px;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  background-image: url('../assests/profile_pic.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+h2 {
+  margin-bottom: 5px;
+  color: #333;
+  text-align: center;
+}
+
+.org {
+  color: #777;
+  font-size: 14px;
+  text-align: center;
+}
+
+.w2 {
+  flex: 2 1 600px;
+  padding: 30px 20px;
+}
+
+h3 {
+  margin-bottom: 20px;
+  color: rgb(247, 178, 51);
+  font-size: 22px;
+  text-align: center;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.input-group.full {
+  flex-direction: column;
+}
+
+.input-group div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 100px;
+}
+
+label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(to right, skyblue, rgb(191, 226, 240));
+  color: black;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin: 16px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid black;
+}
+
+.divider:not(:empty)::before {
+  margin-right: 10px;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 10px;
+}
+
+.divider span {
+  font-size: 14px;
+  color: black;
+}
+
+.cre {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.cre a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.cre a:hover {
+  color: rgb(247, 178, 51);
+}
+
+/* ---------- Your Original Responsive Breakpoints ---------- */
+@media (max-width: 992px) {
+  .container {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .w1, .w2 {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .input-group {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  h3 {
+    font-size: 18px;
+  }
+
+  input {
+    font-size: 13px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  label {
+    font-size: 13px;
+  }
+
+  .profile-pic {
+    width: 80px;
+    height: 80px;
+  }
+
+  .cre {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 10px;
+  }
+
+  .input-group div {
+    min-width: 100%;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .btn {
+    font-size: 13px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 320px) {
+  h2, h3 {
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  label {
+    font-size: 12px;
+  }
+
+  .btn {
+    font-size: 12px;
+  }
+
+  .profile-pic {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 280px) {
+  .container {
+    padding: 5px;
+  }
+
+  .w1, .w2 {
+    padding: 10px;
+  }
+
+  .btn {
+    font-size: 11px;
+    padding: 6px;
+  }
+
+  .profile-pic {
+    width: 60px;
+    height: 60px;
+  }
+
+  h2, h3 {
+    font-size: 14px;
+  }
+}
+
+/* ---------- Minimal Additions to Enforce 100% Responsiveness ---------- */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  overflow-wrap: break-word;
+}

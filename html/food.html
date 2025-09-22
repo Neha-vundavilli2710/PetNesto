@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <link rel="stylesheet" href="./all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+   <header>
+      <nav class="nav_container">
+        <div class="left_nav">
+          <button onclick="openSidebar()" class="hamburger">☰</button>
+          <span class="logo">
+            Pet<span class="highlight">Nesto</span>
+          </span>
+        </div>
+        <!-- Search bar for desktop -->
+        <div class="search-bar desktop-only-search">
+          <input
+            type="text"
+            id="searchInputDesktop"
+            placeholder="Search for pets ......."
+            oninput="filterCards()"
+          />
+          <button><i class="fa fa-search"></i></button>
+        </div>
+        <!-- Right navigation items for desktop -->
+        <div class="right_nav desktop-only-nav-items">
+          <!-- location -->
+          <div class="location1">
+            <i class="fas fa-map-marker-alt location-icon"></i>
+            <input type="text" placeholder="Select Location" />
+          </div>
+          <!-- home -->
+          <div class="home" onclick="window.location.href='../html/final.html'">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </div>
+          <div class="nav-icons">
+            <div
+              class="nav-wishlist"
+              id="navWishlistDesktop"
+              onclick="togglePopup('wishlistPopup')"
+            >
+              <i class="fa-regular fa-heart"></i
+              ><span id="wishlistCountDesktop">0</span>
+            </div>
+            <div
+              class="nav-cart"
+              id="navCartDesktop"
+              onclick="togglePopup('cartPopup')"
+            >
+              <i class="fa-solid fa-cart-shopping"></i
+              ><span id="cartCountDesktop">0</span>
+            </div>
+          </div>
+          <!-- profile -->
+          <div class="profile">
+            <a href="../html/profile.html">
+              <i class="fa-regular fa-user"></i>
+              <!-- <span>Profile</span> -->
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="container">
+      <div class="side-bar" id="sidebar">
+        <span onclick="closeSidebar()" id="icon">&times;</span>
+        <!-- Search bar for sidebar (mobile/tablet) -->
+        <label class="mobile-only-sidebar-item sidebar-search-label">
+          <i class="fa fa-search"></i>
+          <input type="text" placeholder="Search..." id="searchInputSidebar" oninput="filterCards()" />
+        </label>
+        <!-- Location for sidebar (mobile/tablet) -->
+        <label class="mobile-only-sidebar-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Select Location</span>
+        </label>
+        <!-- Home for sidebar (mobile/tablet) -->
+        <label class="mobile-only-sidebar-item" onclick="window.location.href='../html/final.html'">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </label>
+        <!-- Wishlist for sidebar (mobile/tablet) -->
+        <label class="mobile-only-sidebar-item" onclick="togglePopup('wishlistPopup')">
+          <i class="fa-regular fa-heart"></i>
+          <span>Wishlist</span><span class="sidebar-count" id="wishlistCountSidebar">0</span>
+        </label>
+        <!-- Cart for sidebar (mobile/tablet) -->
+        <label class="mobile-only-sidebar-item" onclick="togglePopup('cartPopup')">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Cart</span><span class="sidebar-count" id="cartCountSidebar">0</span>
+        </label>
+        <!-- Profile for sidebar (mobile/tablet) -->
+      <label class="mobile-only-sidebar-item">
+        <a href="../html/profile.html">
+          <i class="fa-regular fa-user" style="color: black;"></i>
+          <span style="color: black;">Profile</span>
+        </a>
+      </label>
+
+        <!-- Existing pet categories -->
+        <label><input type="checkbox" onclick="redirectToPage(this, 'all.html')" /> Unfiltered Pets</label>
+        <label><input type="checkbox" onclick="redirectToPage(this, 'dog.html')" /> Dog</label>
+        <label><input type="checkbox" onclick="redirectToPage(this, 'cat.html')" /> Cat</label>
+        <label><input type="checkbox" onclick="redirectToPage(this, 'fish.html')" /> Fish</label>
+        <label><input type="checkbox" onclick="redirectToPage(this, 'bird.html')" /> Bird</label>
+        <label><input type="checkbox" onclick="redirectToPage(this, 'hamster.html')" /> Hamster</label>
+        <label><input type="checkbox" onclick="redirectToPage(this, 'turtle.html')" /> Turtle</label>
+        <label><input type="checkbox" onclick="redirectToPage(this, 'rabbit.html')" /> Rabbit</label>
+      </div>
+      <div class="popup" id="wishlistPopup">
+        <h4>Wishlist Items</h4>
+        <div class="popup-content" id="wishlistItems"></div>
+      </div>
+
+      <div class="popup" id="cartPopup">
+        <h4>Cart Items</h4>
+        <div class="popup-content" id="cartItems"></div>
+      </div>
+
+    <div class="grid">
+        <div class="card">
+            <img src="./drools_dogs.jpeg">
+            <div class="name">Drools <span style="color: red;">$230</span></div>
+            <div class="shop"><i class="fa-solid fa-store"></i> Furry Friends Haven</div>
+            <div class="location"><i class="fa-solid fa-location-dot"></i> Banjara Hills, Hyderabad</div>
+            <button class="cart" onclick="addToCart(this)">Add to Cart</button>
+            <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="card">
+            <img src="./purepet.jpeg">
+            <div class="name">Purpet <span style="color: red;">$850</span></div>
+            <div class="shop"><i class="fa-solid fa-store"></i> Pawfect Companions</div>
+            <div class="location"><i class="fa-solid fa-location-dot"></i> Indiranagar, Bengaluru</div>
+            <button class="cart" onclick="addToCart(this)">Add to Cart</button>
+            <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="card">
+            <img src="./oat_hay.jpeg">
+            <div class="name">Oat Hay <span style="color: red;">$220</span></div>
+            <div class="shop"><i class="fa-solid fa-store"></i> Paws & Tails Mart</div>
+            <div class="location"><i class="fa-solid fa-location-dot"></i> Andheri West, Mumbai</div>
+            <button class="cart" onclick="addToCart(this)">Add to Cart</button>
+            <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="card">
+            <img src="./kagni.jpeg">
+            <div class="name">Sirena Foxtail Millet <span style="color: red;">$130</span></div>
+            <div class="shop"><i class="fa-solid fa-store"></i> TailWag Town</div>
+            <div class="location"><i class="fa-solid fa-location-dot"></i> Alkapur Township, Hyderabad</div>
+            <button class="cart" onclick="addToCart(this)">Add to Cart</button>
+            <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="card">
+            <img src="./reptomin.jpeg">
+            <div class="name">ReptoMin Sticks <span style="color: red;">$230</span></div>
+            <div class="shop"><i class="fa-solid fa-store"></i> The Fluffy Corner</div>
+            <div class="location"><i class="fa-solid fa-location-dot"></i> Salt Lake, Kolkata</div>
+            <button class="cart" onclick="addToCart(this)">Add to Cart</button>
+            <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="card">
+            <img src="./hamster.jpeg">
+            <div class="name">Jimmy Oat Hay Pellets <span style="color: red;">$630</span></div>
+            <div class="shop"><i class="fa-solid fa-store"></i> Happy Tails</div>
+            <div class="location"><i class="fa-solid fa-location-dot"></i> MG Road, Pune</div>
+            <button class="cart" onclick="addToCart(this)">Add to Cart</button>
+            <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="card">
+            <img src="./puppies.jpeg">
+            <div class="name">Pedigree Puppy Chicken <span style="color: red;">$311</span></div>
+            <div class="shop"><i class="fa-solid fa-store"></i> Pet Pantry</div>
+            <div class="location"><i class="fa-solid fa-location-dot"></i> Anna Nagar, Chennai</div>
+            <button class="cart" onclick="addToCart(this)">Add to Cart</button>
+            <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="card">
+            <img src="./kitten.jpeg">
+            <div class="name">Royal Canin <span style="color: red;">$1782</span></div>
+            <div class="shop"><i class="fa-solid fa-store"></i> Woof & Meow Supplies</div>
+            <div class="location"><i class="fa-solid fa-location-dot"></i> Sector 62, Noida</div>
+            <button class="cart" onclick="addToCart(this)">Add to Cart</button>
+            <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="card">
+            <img src="./bird.jpeg">
+            <div class="name">Boltz All life Stages <span style="color: red;">$400</span></div>
+            <div class="shop"><i class="fa-solid fa-store"></i> Woof & Meow Supplies</div>
+            <div class="location"><i class="fa-solid fa-location-dot"></i> Sector 62, Noida</div>
+            <button class="cart" onclick="addToCart(this)">Add to Cart</button>
+            <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="card">
+            <img src="./prodiest.jpeg">
+            <div class="name">clumsy bumsy <span style="color: red;">$130</span></div>
+            <div class="shop"><i class="fa-solid fa-store"></i> Woof & Meow Supplies</div>
+            <div class="location"><i class="fa-solid fa-location-dot"></i> Sector 62, Noida</div>
+            <button class="cart" onclick="addToCart(this)">Add to Cart</button>
+            <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="card">
+            <img src="./optimum.jpeg">
+            <div class="name">Optimum Fish Food <span style="color: red;">$180</span></div>
+            <div class="shop"><i class="fa-solid fa-store"></i> Woof & Meow Supplies</div>
+            <div class="location"><i class="fa-solid fa-location-dot"></i> Sector 62, Noida</div>
+            <button class="cart" onclick="addToCart(this)">Add to Cart</button>
+            <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="card">
+            <img src="./tortoise.jpeg">
+            <div class="name">Taiyo Tortoise Stick <span style="color: red;">$210</span></div>
+            <div class="shop"><i class="fa-solid fa-store"></i> Woof & Meow Supplies</div>
+            <div class="location"><i class="fa-solid fa-location-dot"></i> Sector 62, Noida</div>
+             <button class="cart" onclick="addToCart(this)">Add to Cart</button>
+            <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
+        </div>
+    </div>
+         <script>
+      let wishlistCounter = 0;
+      let cartCounter = 0;
+      const wishlistItems = [];
+      const cartItems = [];
+
+      // Function to update counts on both desktop and sidebar
+      function updateCounts() {
+        document.getElementById("wishlistCountDesktop").textContent = wishlistCounter;
+        document.getElementById("wishlistCountSidebar").textContent = wishlistCounter;
+        document.getElementById("cartCountDesktop").textContent = cartCounter;
+        document.getElementById("cartCountSidebar").textContent = cartCounter;
+      }
+
+      function toggleWishlist(element) {
+        element.classList.toggle("active");
+
+        const card = element.closest(".card");
+        const name = card.querySelector(".name").innerText;
+        const img = card.querySelector("img").src;
+
+        if (element.classList.contains("active")) {
+          wishlistItems.push({ name, img });
+          wishlistCounter++;
+        } else {
+          const index = wishlistItems.findIndex((item) => item.name === name);
+          if (index > -1) wishlistItems.splice(index, 1);
+          wishlistCounter--;
+        }
+
+        updateCounts(); // Update all counters
+        renderPopupItems("wishlistItems", wishlistItems);
+        animateIcon("navWishlistDesktop"); // Animate desktop icon
+      }
+
+      function addToCart(button) {
+        const card = button.closest(".card");
+        const name = card.querySelector(".name").innerText;
+        const img = card.querySelector("img").src;
+
+        cartItems.push({ name, img });
+        cartCounter++;
+        button.innerText = "Added!";
+        button.classList.add("added");
+        button.disabled = true;
+
+        updateCounts(); // Update all counters
+        renderPopupItems("cartItems", cartItems);
+        animateIcon("navCartDesktop"); // Animate desktop icon
+      }
+
+      function renderPopupItems(containerId, items) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = "";
+
+        if (items.length === 0) {
+          container.innerHTML = "<p>No items added yet.</p>";
+          return;
+        }
+
+        items.forEach((item) => {
+          const div = document.createElement("div");
+          div.classList.add("popup-item");
+          div.innerHTML = `
+          <img src="${item.img}" alt="item" />
+          <span>${item.name}</span>
+        `;
+          container.appendChild(div);
+        });
+      }
+
+      function togglePopup(id) {
+        document.getElementById("wishlistPopup").style.display = "none";
+        document.getElementById("cartPopup").style.display = "none";
+        const popup = document.getElementById(id);
+        popup.style.display =
+          popup.style.display === "block" ? "none" : "block";
+      }
+
+      function animateIcon(id) {
+        const icon = document.getElementById(id);
+        icon.classList.add("bounce");
+        setTimeout(() => icon.classList.remove("bounce"), 500);
+      }
+
+      function closeSidebar() {
+        document.getElementById("sidebar").classList.remove("open");
+        document.querySelector(".container").classList.remove("shifted");
+      }
+
+      function openSidebar() {
+        document.getElementById("sidebar").classList.add("open");
+        document.querySelector(".container").classList.add("shifted");
+      }
+
+      function redirectToPage(checkbox, page) {
+        if (checkbox.checked) {
+          window.location.href = page;
+        }
+      }
+
+      function filterCards() {
+        const desktopInput = document.getElementById("searchInputDesktop");
+        const sidebarInput = document.getElementById("searchInputSidebar");
+        let input = '';
+
+        // Determine which input is active/visible based on screen width
+        if (window.innerWidth >= 1024 && desktopInput) {
+            input = desktopInput.value.toLowerCase();
+        } else if (sidebarInput) { // For smaller screens, use sidebar input
+            input = sidebarInput.value.toLowerCase();
+        }
+
+        const cards = document.querySelectorAll(".card");
+        cards.forEach((card) => {
+          const name = card.querySelector(".name").innerText.toLowerCase();
+          card.style.display = name.includes(input) ? "block" : "none";
+        });
+      }
+
+      // Close popups when clicking outside
+      window.addEventListener("click", function (e) {
+        // Exclude clicks on nav icons and sidebar items that toggle popups
+        if (!e.target.closest("#navWishlistDesktop") &&
+            !e.target.closest("#navCartDesktop") &&
+            !e.target.closest(".mobile-only-sidebar-item[onclick*='togglePopup']") &&
+            !e.target.closest(".popup")) {
+          document.getElementById("wishlistPopup").style.display = "none";
+          document.getElementById("cartPopup").style.display = "none";
+        }
+      });
+
+      // Initial count update on page load
+      updateCounts();
+    </script>
+    </div>
+  </body>
+</html>
+  

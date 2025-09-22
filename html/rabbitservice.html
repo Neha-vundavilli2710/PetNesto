@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamster</title>
+    <link rel="stylesheet" href="./petservice.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="nav_container">
+            <div class="left_nav">
+                <button onclick="openSidebar()" class="hamburger">☰</button>
+          <span class="logo">
+            Pet<span class="highlight">Nesto</span>
+          </span>
+        </div>
+        <div class="search-bar desktop-only-search">
+          <input
+            type="text"
+            id="searchInputDesktop"
+            placeholder="Search for Services ......."
+            oninput="filterCards()"
+          />
+          <button><i class="fa fa-search"></i></button>
+        </div>
+        <!-- Right navigation items for desktop -->
+        <div class="right_nav desktop-only-nav-items">
+                <!-- location -->
+                <div class="location1">
+                    <i class="fas fa-map-marker-alt location-icon"></i>
+                    <input type="text" placeholder="Select Location" />
+                </div>
+                <!-- home -->
+                <div class="home">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </div>
+                <div class="nav-icons">
+                    <!-- wishlist & cart -->
+            <div
+              class="nav-wishlist"
+              id="navWishlistDesktop"
+              onclick="togglePopup('wishlistPopup')"
+            >
+              <i class="fa-regular fa-heart"></i
+              ><span id="wishlistCountDesktop">0</span>
+            </div>
+            <div
+              class="nav-cart"
+              id="navCartDesktop"
+              onclick="togglePopup('cartPopup')"
+            >
+              <i class="fa-solid fa-cart-shopping"></i
+              ><span id="cartCountDesktop">0</span>
+            </div>
+          </div>
+                <!-- profile -->
+                <!-- <div class="profile"> -->
+                    <a href="#">
+                        <i class="fa-regular fa-user"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+      <div class="side-bar" id="sidebar">
+        <span onclick="closeSidebar()" id="icon">&times;</span>
+        <!-- Search bar for sidebar (mobile/tablet) -->
+        <label class="mobile-only-sidebar-item sidebar-search-label">
+          <i class="fa fa-search"></i>
+          <input type="text" placeholder="Search..." id="searchInputSidebar" oninput="filterCards()" />
+        </label>
+        <!-- Location for sidebar (mobile/tablet) -->
+        <label class="mobile-only-sidebar-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Select Location</span>
+        </label>
+        <!-- Home for sidebar (mobile/tablet) -->
+        <label class="mobile-only-sidebar-item">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </label>
+        <!-- Wishlist for sidebar (mobile/tablet) -->
+        <label class="mobile-only-sidebar-item" onclick="togglePopup('wishlistPopup')">
+          <i class="fa-regular fa-heart"></i>
+          <span>Wishlist</span><span class="sidebar-count" id="wishlistCountSidebar">0</span>
+        </label>
+        <!-- Cart for sidebar (mobile/tablet) -->
+        <label class="mobile-only-sidebar-item" onclick="togglePopup('cartPopup')">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Cart</span><span class="sidebar-count" id="cartCountSidebar">0</span>
+        </label>
+        <!-- Profile for sidebar (mobile/tablet) -->
+        <label class="mobile-only-sidebar-item">
+          <i class="fa-regular fa-user"></i>
+          
+        </label>
+
+        <!-- Existing pet categories -->
+        <label><input type="checkbox" onclick="redirectToPage(this, 'allservice.html')" /> Unfiltered Services</label>
+        <label><input type="checkbox" onclick="redirectToPage(this, 'dogservice.html')" /> Dog</label>
+        <label><input type="checkbox" onclick="redirectToPage(this, 'catservice.html')" /> Cat</label>
+        <label><input type="checkbox" onclick="redirectToPage(this, 'fishservice.html')" /> Fish</label>
+        <label><input type="checkbox" onclick="redirectToPage(this, 'birdservice.html')" /> Bird</label>
+        <label><input type="checkbox" onclick="redirectToPage(this, 'hamsterservice.html')" /> Hamster</label>
+        <label><input type="checkbox" onclick="redirectToPage(this, 'turtleservice.html')" /> Turtle</label>
+        <label><input type="checkbox" onclick="redirectToPage(this, 'rabbitservice.html')" /> Rabbit</label>
+      </div>
+      <div class="popup" id="wishlistPopup">
+        <h4>Wishlist Items</h4>
+        <div class="popup-content" id="wishlistItems"></div>
+      </div>
+
+      <div class="popup" id="cartPopup">
+        <h4>Cart Items</h4>
+        <div class="popup-content" id="cartItems"></div>
+      </div>
+
+    <div class="grid">
+         <div class="card">
+            <img src="./rabbicare.jpeg">
+            <div class="name">Veterinary & Medical Care<span style="color: red;">$500</span></div>
+            <div class="shop"><i class="fa-solid fa-store"></i>The Exotics Vet</div>
+            <div class="location"><i class="fa-solid fa-location-dot"></i> Banjara Hills, Hyderabad</div>
+            <button class="cart" onclick="addToCart(this)">Add to Cart</button>
+            <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="card">
+            <img src="./rabbident.jpeg">
+            <div class="name">Dental care<span style="color: red;">$230</span></div>
+            <div class="shop"><i class="fa-solid fa-store"></i>VetEssential Clinics</div>
+            <div class="location"><i class="fa-solid fa-location-dot"></i> Indiranagar, Bengaluru</div>
+            <button class="cart" onclick="addToCart(this)">Add to Cart</button>
+            <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="card">
+            <img src="./rabiday.jpeg">
+            <div class="name">Rabbit Daycare <span style="color: red;">$1500</span></div>
+            <div class="shop"><i class="fa-solid fa-store"></i>Bunny Paradise </div>
+            <div class="location"><i class="fa-solid fa-location-dot"></i> Andheri West, Mumbai</div>
+            <button class="cart" onclick="addToCart(this)">Add to Cart</button>
+            <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="card">
+            <img src="./rabitrain.jpeg">
+            <div class="name">Training  <span style="color: red;">$550</span></div>
+            <div class="shop"><i class="fa-solid fa-store"></i> Rabbit Coach</div>
+            <div class="location"><i class="fa-solid fa-location-dot"></i> Alkapur Township, Hyderabad</div>
+            <button class="cart" onclick="addToCart(this)">Add to Cart</button>
+            <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
+        </div>
+         <div class="card">
+            <img src="./rabigroom.jpeg">
+            <div class="name">Grooming<span style="color: red;">$550</span></div>
+            <div class="shop"><i class="fa-solid fa-store"></i> Rabbit groom</div>
+            <div class="location"><i class="fa-solid fa-location-dot"></i> Alkapur Township, Hyderabad</div>
+            <button class="cart" onclick="addToCart(this)">Add to Cart</button>
+            <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
+        </div>
+       
+       
+        <script>
+      let wishlistCounter = 0;
+      let cartCounter = 0;
+      const wishlistItems = [];
+      const cartItems = [];
+
+      // Function to update counts on both desktop and sidebar
+      function updateCounts() {
+        document.getElementById("wishlistCountDesktop").textContent = wishlistCounter;
+        document.getElementById("wishlistCountSidebar").textContent = wishlistCounter;
+        document.getElementById("cartCountDesktop").textContent = cartCounter;
+        document.getElementById("cartCountSidebar").textContent = cartCounter;
+      }
+
+      function toggleWishlist(element) {
+        element.classList.toggle("active");
+
+        const card = element.closest(".card");
+        const name = card.querySelector(".name").innerText;
+        const img = card.querySelector("img").src;
+
+        if (element.classList.contains("active")) {
+          wishlistItems.push({ name, img });
+          wishlistCounter++;
+        } else {
+          const index = wishlistItems.findIndex((item) => item.name === name);
+          if (index > -1) wishlistItems.splice(index, 1);
+          wishlistCounter--;
+        }
+
+        updateCounts(); // Update all counters
+        renderPopupItems("wishlistItems", wishlistItems);
+        animateIcon("navWishlistDesktop"); // Animate desktop icon
+      }
+
+      function addToCart(button) {
+        const card = button.closest(".card");
+        const name = card.querySelector(".name").innerText;
+        const img = card.querySelector("img").src;
+
+        cartItems.push({ name, img });
+        cartCounter++;
+        button.innerText = "Added!";
+        button.classList.add("added");
+        button.disabled = true;
+
+        updateCounts(); // Update all counters
+        renderPopupItems("cartItems", cartItems);
+        animateIcon("navCartDesktop"); // Animate desktop icon
+      }
+
+      function renderPopupItems(containerId, items) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = "";
+
+        if (items.length === 0) {
+          container.innerHTML = "<p>No items added yet.</p>";
+          return;
+        }
+
+        items.forEach((item) => {
+          const div = document.createElement("div");
+          div.classList.add("popup-item");
+          div.innerHTML = `
+          <img src="${item.img}" alt="item" />
+          <span>${item.name}</span>
+        `;
+          container.appendChild(div);
+        });
+      }
+
+      function togglePopup(id) {
+        document.getElementById("wishlistPopup").style.display = "none";
+        document.getElementById("cartPopup").style.display = "none";
+        const popup = document.getElementById(id);
+        popup.style.display =
+          popup.style.display === "block" ? "none" : "block";
+      }
+
+      function animateIcon(id) {
+        const icon = document.getElementById(id);
+        icon.classList.add("bounce");
+        setTimeout(() => icon.classList.remove("bounce"), 500);
+      }
+
+      function closeSidebar() {
+        document.getElementById("sidebar").classList.remove("open");
+        document.querySelector(".container").classList.remove("shifted");
+      }
+
+      function openSidebar() {
+        document.getElementById("sidebar").classList.add("open");
+        document.querySelector(".container").classList.add("shifted");
+      }
+
+      function redirectToPage(checkbox, page) {
+        if (checkbox.checked) {
+          window.location.href = page;
+        }
+      }
+
+      function filterCards() {
+        const desktopInput = document.getElementById("searchInputDesktop");
+        const sidebarInput = document.getElementById("searchInputSidebar");
+        let input = '';
+
+        // Determine which input is active/visible based on screen width
+        if (window.innerWidth >= 1024 && desktopInput) {
+            input = desktopInput.value.toLowerCase();
+        } else if (sidebarInput) { // For smaller screens, use sidebar input
+            input = sidebarInput.value.toLowerCase();
+        }
+
+        const cards = document.querySelectorAll(".card");
+        cards.forEach((card) => {
+          const name = card.querySelector(".name").innerText.toLowerCase();
+          card.style.display = name.includes(input) ? "block" : "none";
+        });
+      }
+
+      // Close popups when clicking outside
+      window.addEventListener("click", function (e) {
+        // Exclude clicks on nav icons and sidebar items that toggle popups
+        if (!e.target.closest("#navWishlistDesktop") &&
+            !e.target.closest("#navCartDesktop") &&
+            !e.target.closest(".mobile-only-sidebar-item[onclick*='togglePopup']") &&
+            !e.target.closest(".popup")) {
+          document.getElementById("wishlistPopup").style.display = "none";
+          document.getElementById("cartPopup").style.display = "none";
+        }
+      });
+
+      // Initial count update on page load
+      updateCounts();
+</script>
+    </div>   
+</body>
+</html>

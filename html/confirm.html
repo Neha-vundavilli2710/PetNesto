@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pet Food Offer</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .banner {
+      display: flex;
+      flex-wrap: wrap;
+      background: linear-gradient(to right, #fceabb, #00dff8);
+      border-radius: 20px;
+      padding: 30px;
+      width: 100%;
+      max-width: 1200px;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .left-section {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .left-section .tag {
+      background-color: #ff4e50;
+      color: white;
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .left-section h1 {
+      font-size: 30px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .left-section p {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 25px;
+    }
+
+    .product-info {
+      background-color: white;
+      padding: 10px 15px;
+      border-radius: 15px;
+      display: inline-block;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .product-info strong {
+      display: block;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .product-info span {
+      font-size: 14px;
+      color: gray;
+    }
+
+    .middle-section {
+      width: 400px;
+      height: 200px;
+    }
+    .middle-section img {
+      width: 400px;
+      height: 200px;
+      border-radius: 70px;
+    }
+
+    .middle-section img {
+      max-width: 80%;
+      max-height: 250px;
+      object-fit: contain;
+    }
+
+    .right-section {
+      min-width: 200px;
+      text-align: center;
+    }
+
+    .price-box {
+      background-color: white;
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    .price-box del {
+      font-size: 14px;
+      color: gray;
+    }
+
+    .price-box .price {
+      font-size: 32px;
+      font-weight: bold;
+      color: #ff4e50;
+    }
+
+    .price-box .save {
+      background-color: #27ae60;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 12px;
+      margin-top: 10px;
+      display: inline-block;
+      font-size: 14px;
+    }
+
+    .inquire-btn {
+      background: linear-gradient(to right, #834eff, #eb23f9);
+      color: white;
+      padding: 12px 24px;
+      width: 300px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .inquire-btn:hover {
+      opacity: 0.9;
+    }
+
+    @media(max-width: 768px) {
+      .banner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .middle-section {
+        margin: 20px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <!-- Left Section -->
+    <div class="left-section">
+      <div class="tag">🎁 PET ACCESSORY DEAL</div>
+      <h1>Premium Pet Accessories Now Available!</h1>
+      <p>Stylish, durable, and vet-recommended items for your furry friends.</p>
+      <div class="product-info">
+        <strong>Deluxe Accessory Pack</strong>
+        <span>Collar • Leash • Toy Set • Perfect for all pets
+
+</span>
+      </div>
+    </div>
+
+    <!-- Middle Section (Image of food) -->
+    <div class="middle-section">
+      <img src="../assests/dup_accessories/dog1.jpg" alt="Pet Food Image" />
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-section">
+      <div class="price-box">
+        <del>₹699</del><br />
+        <div class="price">₹299</div>
+        <div class="save">Save ₹399</div>
+      </div>
+      <button class="inquire-btn">Deal of the day</button>
+    </div>
+  </div>
+</body>
+</html>

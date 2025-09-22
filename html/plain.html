@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paws & Claws - Your Premium Pet Marketplace</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      /* Pure white background */
+      color: #333333;
+      /* Darker text for clear readability */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    /* Header */
+    header {
+      background-color: #ffffff;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    header nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      header nav {
+        flex-direction: row;
+      }
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo a {
+      font-size: 1.875rem;
+      /* text-3xl */
+      font-weight: 800;
+      /* font-extrabold */
+      color: #1a202c;
+      /* gray-900 */
+      border-radius: 0.5rem;
+      /* rounded-lg */
+      padding: 0.5rem;
+      transition-property: background-color, color;
+      transition-duration: 0.15s;
+      transition-timing-function: ease-in-out;
+    }
+
+    .logo a:hover {
+      background-color: #f7fafc;
+      /* gray-50 */
+    }
+
+    .logo .text-red {
+      color: #ef4444;
+      /* red-500 */
+    }
+
+    .logo .text-gray {
+      color: #4a5568;
+      /* gray-700 */
+    }
+
+    /* Search Bar */
+    .search-bar {
+      position: relative;
+      flex-grow: 1;
+      width: 100%;
+      max-width: 600px;
+      /* max-w-lg */
+    }
+
+    @media (min-width: 768px) {
+      .search-bar {
+        width: auto;
+      }
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding-left: 2.5rem;
+      /* pl-10 */
+      padding-right: 1rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      border: 1px solid #edf2f7;
+      /* border-gray-200 */
+      border-radius: 9999px;
+      /* rounded-full */
+      outline: none;
+      transition: all 0.2s ease-in-out;
+      background-color: #ffffff;
+      color: #4a5568;
+      /* gray-700 */
+    }
+
+    .search-bar input::placeholder {
+      color: #a0aec0;
+      /* gray-400 */
+    }
+
+    .search-bar input:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(160, 174, 192, 0.5);
+      /* ring-2 ring-gray-300 */
+      border-color: transparent;
+    }
+
+    .search-icon {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      padding-inline-start: 0.75rem;
+      /* pl-3 */
+      display: flex;
+      align-items: center;
+      pointer-events: none;
+      height: 100%;
+    }
+
+    .search-icon svg {
+      height: 1.25rem;
+      /* h-5 */
+      width: 1.25rem;
+      /* w-5 */
+      color: #a0aec0;
+      /* text-gray-400 */
+    }
+
+    /* Navigation Icons & Buttons */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      /* space-x-4 */
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      color: #4a5568;
+      /* text-gray-700 */
+      transition-property: color, background-color;
+      transition-duration: 0.15s;
+      transition-timing-function: ease-in-out;
+      border-radius: 9999px;
+      /* rounded-full */
+      padding: 0.5rem;
+    }
+
+    .nav-link:hover {
+      color: #ef4444;
+      /* hover:text-red-500 */
+      background-color: #f7fafc;
+      /* hover:bg-gray-100 */
+    }
+
+    .nav-link svg {
+      height: 1.5rem;
+      /* h-6 */
+      width: 1.5rem;
+      /* w-6 */
+      transition-property: transform;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-in-out;
+    }
+
+    .nav-link:hover svg {
+      transform: scale(1.05);
+    }
+
+    .nav-link span {
+      display: none;
+      margin-left: 0.25rem;
+      /* ml-1 */
+      font-size: 0.875rem;
+      /* text-sm */
+      font-weight: 500;
+      /* font-medium */
+    }
+
+    @media (min-width: 768px) {
+      .nav-link span {
+        display: block;
+      }
+    }
+
+    .signup-button {
+      background-color: #ef4444;
+      /* bg-red-500 */
+      color: white;
+      font-weight: 600;
+      /* font-semibold */
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      border-radius: 9999px;
+      /* rounded-full */
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      /* shadow-md */
+      transition: all 0.3s ease-in-out;
+      transform: scale(1);
+      margin-left: 1rem;
+      /* ml-4 */
+      outline: none;
+      cursor: pointer;
+    }
+
+    .signup-button:hover {
+      background-color: #dc2626;
+      /* hover:bg-red-600 */
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      /* hover:shadow-lg */
+      transform: scale(1.05);
+    }
+
+    .signup-button:focus {
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.5), 0 0 0 4px rgba(254, 202, 202, 0.5);
+      /* ring-2 ring-red-300 ring-offset-2 */
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background-image: url('https://placehold.co/1920x700/D0E0E3/333333?text=Your%20Perfect%20Pets');
+      background-size: cover;
+      background-position: center;
+      height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff;
+      position: relative;
+      animation: fadeInBackground 2s ease-out;
+    }
+
+    @keyframes fadeInBackground {
+      from {
+        opacity: 0.8;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-content {
+      max-width: 64rem;
+      /* max-w-4xl */
+      padding-left: 1rem;
+      padding-right: 1rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      /* text-5xl */
+      line-height: 1.25;
+      /* leading-tight */
+      font-weight: 800;
+      /* font-extrabold */
+      margin-bottom: 1.5rem;
+      /* mb-6 */
+      filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07));
+      /* drop-shadow-md */
+      animation: fadeInTop 1s ease-out;
+    }
+
+    @media (min-width: 640px) {
+      .hero-content h1 {
+        font-size: 3.75rem;
+        /* sm:text-6xl */
+      }
+    }
+
+    @media (min-width: 768px) {
+      .hero-content h1 {
+        font-size: 4.5rem;
+        /* md:text-7xl */
+      }
+    }
+
+    @keyframes fadeInTop {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-content p {
+      font-size: 1.125rem;
+      /* text-lg */
+      font-weight: 500;
+      /* font-medium */
+      margin-bottom: 2rem;
+      /* mb-8 */
+      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.05));
+      /* drop-shadow-sm */
+      animation: fadeInTop 1s ease-out 0.2s forwards;
+      opacity: 0;
+      /* Initially hidden for animation */
+    }
+
+    @media (min-width: 640px) {
+      .hero-content p {
+        font-size: 1.25rem;
+        /* sm:text-xl */
+      }
+    }
+
+    @media (min-width: 768px) {
+      .hero-content p {
+        font-size: 1.5rem;
+        /* md:text-2xl */
+      }
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+      /* space-y-4 */
+      animation: fadeInTop 1s ease-out 0.4s forwards;
+      opacity: 0;
+      /* Initially hidden for animation */
+    }
+
+    @media (min-width: 640px) {
+      .hero-buttons {
+        flex-direction: row;
+        gap: 1rem;
+        /* sm:space-x-4 */
+      }
+    }
+
+    .hero-cta {
+      font-weight: 700;
+      /* font-bold */
+      padding: 0.75rem 2rem;
+      /* py-3 px-8 */
+      border-radius: 9999px;
+      /* rounded-full */
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      /* shadow-lg */
+      transition: all 0.3s ease-in-out;
+      transform: scale(1);
+      outline: none;
+      cursor: pointer;
+      font-size: 1.125rem;
+      /* text-lg */
+    }
+
+    .hero-cta:hover {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      /* hover:shadow-xl */
+      transform: scale(1.05);
+    }
+
+    .hero-cta.red-button {
+      background-color: #ef4444;
+      /* bg-red-500 */
+      color: white;
+    }
+
+    .hero-cta.red-button:hover {
+      background-color: #dc2626;
+      /* hover:bg-red-600 */
+    }
+
+    .hero-cta.red-button:focus {
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.5), 0 0 0 4px rgba(254, 202, 202, 0.5);
+      /* ring-2 ring-red-300 ring-offset-2 */
+    }
+
+    .hero-cta.gray-button {
+      background-color: #4a5568;
+      /* bg-gray-700 */
+      color: white;
+    }
+
+    .hero-cta.gray-button:hover {
+      background-color: #2d3748;
+      /* hover:bg-gray-800 */
+    }
+
+    .hero-cta.gray-button:focus {
+      box-shadow: 0 0 0 2px rgba(74, 85, 104, 0.5), 0 0 0 4px rgba(203, 213, 224, 0.5);
+      /* ring-2 ring-gray-500 ring-offset-2 */
+    }
+
+    /* Main content flex-grow */
+    main {
+      flex-grow: 1;
+    }
+
+    /* Category Cards Section */
+    .category-section {
+      padding-top: 4rem;
+      /* py-16 */
+      padding-bottom: 4rem;
+      background-color: #ffffff;
+      border-radius: 0.75rem;
+      /* rounded-xl */
+      box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+      /* shadow-inner */
+      margin-top: 2rem;
+      /* my-8 */
+      margin-bottom: 2rem;
+    }
+
+    .category-section h2 {
+      font-size: 2.25rem;
+      /* text-4xl */
+      font-weight: 800;
+      /* font-extrabold */
+      color: #2d3748;
+      /* gray-800 */
+      text-align: center;
+      margin-bottom: 3rem;
+      /* mb-12 */
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: 2rem;
+      /* gap-8 */
+    }
+
+    @media (min-width: 640px) {
+      .category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .category-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    .category-card {
+      background-color: #ffffff;
+      border-radius: 1rem;
+      /* rounded-2xl */
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      /* shadow-lg */
+      transition: all 0.3s ease-in-out;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transform: translateY(0);
+      border: 1px solid #f7fafc;
+      /* border-gray-100 */
+    }
+
+    .category-card:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      /* hover:shadow-xl */
+      transform: translateY(-8px);
+      /* hover:-translate-y-2 */
+    }
+
+    .card-icon-wrapper {
+      padding: 1rem;
+      border-radius: 9999px;
+      /* rounded-full */
+      margin-bottom: 1rem;
+      transition-property: background-color, color;
+      transition-duration: 0.15s;
+      transition-timing-function: ease-in-out;
+    }
+
+    .category-card:nth-child(1) .card-icon-wrapper {
+      background-color: #fee2e2;
+      /* bg-red-50 */
+    }
+
+    .category-card:nth-child(1):hover .card-icon-wrapper {
+      background-color: #ffeaea;
+      /* hover:bg-red-100 */
+    }
+
+    .category-card:nth-child(1) .card-icon-wrapper svg {
+      color: #ef4444;
+      /* text-red-500 */
+    }
+
+    .category-card:nth-child(1):hover .card-icon-wrapper svg {
+      color: #dc2626;
+      /* group-hover:text-red-600 */
+    }
+
+    .category-card:nth-child(2) .card-icon-wrapper {
+      background-color: #f7fafc;
+      /* bg-gray-100 */
+    }
+
+    .category-card:nth-child(2):hover .card-icon-wrapper {
+      background-color: #edf2f7;
+      /* hover:bg-gray-200 */
+    }
+
+    .category-card:nth-child(2) .card-icon-wrapper svg {
+      color: #4a5568;
+      /* text-gray-700 */
+    }
+
+    .category-card:nth-child(2):hover .card-icon-wrapper svg {
+      color: #2d3748;
+      /* group-hover:text-gray-800 */
+    }
+
+    .category-card:nth-child(3) .card-icon-wrapper {
+      background-color: #fffbeb;
+      /* bg-yellow-50 */
+    }
+
+    .category-card:nth-child(3):hover .card-icon-wrapper {
+      background-color: #fff8e6;
+      /* hover:bg-yellow-100 */
+    }
+
+    .category-card:nth-child(3) .card-icon-wrapper svg {
+      color: #eab308;
+      /* text-yellow-500 */
+    }
+
+    .category-card:nth-child(3):hover .card-icon-wrapper svg {
+      color: #ca8a04;
+      /* group-hover:text-yellow-600 */
+    }
+
+    .category-card:nth-child(4) .card-icon-wrapper {
+      background-color: #f3e8ff;
+      /* bg-purple-50 */
+    }
+
+    .category-card:nth-child(4):hover .card-icon-wrapper {
+      background-color: #f3e8ff;
+      /* hover:bg-purple-100 */
+    }
+
+    .category-card:nth-child(4) .card-icon-wrapper svg {
+      color: #a855f7;
+      /* text-purple-500 */
+    }
+
+    .category-card:nth-child(4):hover .card-icon-wrapper svg {
+      color: #9333ea;
+      /* group-hover:text-purple-600 */
+    }
+
+    .card-icon-wrapper svg {
+      height: 2.5rem;
+      /* h-10 */
+      width: 2.5rem;
+      /* w-10 */
+      transition-property: color;
+      transition-duration: 0.15s;
+      transition-timing-function: ease-in-out;
+    }
+
+    .card-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 0.75rem;
+      /* More rounded corners */
+      margin-bottom: 1.5rem;
+      /* mb-6 */
+    }
+
+    .category-card h3 {
+      font-size: 1.5rem;
+      /* text-2xl */
+      font-weight: 600;
+      /* font-semibold */
+      color: #2d3748;
+      /* text-gray-800 */
+      margin-bottom: 1rem;
+      /* mb-4 */
+    }
+
+    .category-card p {
+      color: #4a5568;
+      /* text-gray-600 */
+      margin-bottom: 1.5rem;
+      /* mb-6 */
+    }
+
+    .category-button {
+      font-weight: 700;
+      /* font-bold */
+      padding: 0.625rem 1.5rem;
+      /* py-2.5 px-6 */
+      border-radius: 9999px;
+      /* rounded-full */
+      transition: all 0.3s ease-in-out;
+      transform: scale(1);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .category-button:hover {
+      transform: scale(1.05);
+    }
+
+    .category-button:focus {
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.5), 0 0 0 4px rgba(254, 202, 202, 0.5);
+      /* example for red, adjust for others */
+    }
+
+    .category-card:nth-child(1) .category-button {
+      background-color: #ef4444;
+      color: white;
+    }
+
+    .category-card:nth-child(1) .category-button:hover {
+      background-color: #dc2626;
+    }
+
+    .category-card:nth-child(2) .category-button {
+      background-color: #4a5568;
+      color: white;
+    }
+
+    .category-card:nth-child(2) .category-button:hover {
+      background-color: #2d3748;
+    }
+
+    .category-card:nth-child(3) .category-button {
+      background-color: #eab308;
+      color: white;
+    }
+
+    .category-card:nth-child(3) .category-button:hover {
+      background-color: #ca8a04;
+    }
+
+    .category-card:nth-child(4) .category-button {
+      background-color: #a855f7;
+      color: white;
+    }
+
+    .category-card:nth-child(4) .category-button:hover {
+      background-color: #9333ea;
+    }
+
+
+    /* How It Works Section */
+    .how-it-works-section {
+      background-color: #f7fafc;
+      /* bg-gray-50 */
+      color: #2d3748;
+      /* text-gray-800 */
+      padding-top: 4rem;
+      /* py-16 */
+      padding-bottom: 4rem;
+    }
+
+    .how-it-works-section h2 {
+      font-size: 2.25rem;
+      /* text-4xl */
+      font-weight: 800;
+      /* font-extrabold */
+      margin-bottom: 3rem;
+      /* mb-12 */
+      animation: fadeIn 1s ease-out;
+    }
+
+    .how-it-works-grid {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: 2rem;
+      /* gap-8 */
+    }
+
+    @media (min-width: 768px) {
+      .how-it-works-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .how-it-works-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #ffffff;
+      padding: 1.5rem;
+      /* p-6 */
+      border-radius: 0.75rem;
+      /* rounded-xl */
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      /* shadow-md */
+      border: 1px solid #f7fafc;
+      /* border-gray-100 */
+      animation: fadeIn 1s ease-out;
+    }
+
+    .how-it-works-item:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .how-it-works-item:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .how-it-works-item:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .how-it-works-icon-wrapper {
+      padding: 1rem;
+      background-color: #f7fafc;
+      /* bg-gray-100 */
+      color: #4a5568;
+      /* text-gray-700 */
+      border-radius: 9999px;
+      /* rounded-full */
+      margin-bottom: 1rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      /* shadow-lg */
+    }
+
+    .how-it-works-icon-wrapper svg {
+      height: 3rem;
+      /* h-12 */
+      width: 3rem;
+      /* w-12 */
+    }
+
+    .how-it-works-item h3 {
+      font-size: 1.5rem;
+      /* text-2xl */
+      font-weight: 600;
+      /* font-semibold */
+      margin-bottom: 0.75rem;
+      /* mb-3 */
+    }
+
+    .how-it-works-item p {
+      color: #4a5568;
+      /* text-gray-600 */
+      font-size: 1.125rem;
+      /* text-lg */
+    }
+
+    /* Testimonial/Rating Section (with Carousel) */
+    .testimonial-section {
+      background-color: #ffffff;
+      padding-top: 4rem;
+      /* py-16 */
+      padding-bottom: 4rem;
+    }
+
+    .testimonial-section h2 {
+      font-size: 2.25rem;
+      /* text-4xl */
+      font-weight: 800;
+      /* font-extrabold */
+      color: #1a202c;
+      /* text-gray-900 */
+      margin-bottom: 3rem;
+      /* mb-12 */
+    }
+
+    .testimonial-wrapper {
+      max-width: 64rem;
+      /* max-w-4xl */
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #f7fafc;
+      /* bg-gray-50 */
+      border-radius: 1.5rem;
+      /* rounded-3xl */
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      /* shadow-xl */
+      padding: 2rem;
+      /* p-8 */
+      position: relative;
+      border: 1px solid #f7fafc;
+      /* border-gray-100 */
+    }
+
+    @media (min-width: 1024px) {
+      .testimonial-wrapper {
+        padding: 3rem;
+        /* lg:p-12 */
+      }
+    }
+
+    .testimonial-carousel {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .testimonial-container {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .testimonial-item {
+      min-width: 100%;
+      flex-shrink: 0;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* Hide scrollbar for smooth carousel */
+    .testimonial-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .testimonial-carousel {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+
+    .testimonial-item p {
+      color: #4a5568;
+      /* text-gray-700 */
+      font-size: 1.25rem;
+      /* text-xl */
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      /* mb-6 */
+      line-height: 1.625;
+      /* leading-relaxed */
+    }
+
+    .testimonial-item .stars {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      /* mb-4 */
+    }
+
+    .testimonial-item .stars svg {
+      height: 1.5rem;
+      /* h-6 */
+      width: 1.5rem;
+      /* w-6 */
+      color: #facc15;
+      /* text-yellow-400 */
+      fill: #facc15;
+      /* fill-yellow-400 */
+    }
+
+    .testimonial-item .stars svg.empty-star {
+      fill: #fde68a;
+      /* fill-yellow-200 */
+    }
+
+
+    .testimonial-item .author {
+      font-weight: 700;
+      /* font-bold */
+      color: #2d3748;
+      /* text-gray-800 */
+      font-size: 1.125rem;
+      /* text-lg */
+    }
+
+    /* Carousel Navigation */
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #f7fafc;
+      /* bg-gray-100 */
+      padding: 0.75rem;
+      /* p-3 */
+      border-radius: 9999px;
+      /* rounded-full */
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      /* shadow-md */
+      transition: background-color 0.3s ease-in-out;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .carousel-button:hover {
+      background-color: #edf2f7;
+      /* hover:bg-gray-200 */
+    }
+
+    .carousel-button:focus {
+      box-shadow: 0 0 0 2px rgba(160, 174, 192, 0.5);
+      /* ring-2 ring-gray-300 */
+    }
+
+    .carousel-button svg {
+      height: 1.5rem;
+      /* h-6 */
+      width: 1.5rem;
+      /* w-6 */
+      color: #4a5568;
+      /* text-gray-600 */
+    }
+
+    #prevBtn {
+      left: 1rem;
+      /* left-4 */
+    }
+
+    #nextBtn {
+      right: 1rem;
+      /* right-4 */
+    }
+
+    /* Carousel Indicators */
+    .carousel-indicators {
+      display: flex;
+      justify-content: center;
+      margin-top: 1.5rem;
+      /* mt-6 */
+      gap: 0.5rem;
+      /* space-x-2 */
+    }
+
+    .carousel-indicator {
+      width: 0.75rem;
+      /* w-3 */
+      height: 0.75rem;
+      /* h-3 */
+      background-color: #cbd5e0;
+      /* bg-gray-300 */
+      border-radius: 9999px;
+      /* rounded-full */
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out;
+    }
+
+    .carousel-indicator:hover {
+      background-color: #a0aec0;
+      /* hover:bg-gray-400 */
+    }
+
+    .carousel-indicator.active {
+      background-color: #f87171;
+      /* bg-red-400 */
+      width: 1rem;
+      /* w-4 */
+      height: 1rem;
+      /* h-4 */
+    }
+
+    /* Final Call to Action */
+    .cta-section {
+      background-color: #fee2e2;
+      /* bg-red-50 */
+      padding-top: 4rem;
+      /* py-16 */
+      padding-bottom: 4rem;
+      color: #2d3748;
+      /* text-gray-800 */
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-size: 2.25rem;
+      /* text-4xl */
+      font-weight: 800;
+      /* font-extrabold */
+      margin-bottom: 1.5rem;
+      /* mb-6 */
+      line-height: 1.25;
+      /* leading-tight */
+    }
+
+    @media (min-width: 640px) {
+      .cta-section h2 {
+        font-size: 3rem;
+        /* sm:text-5xl */
+      }
+    }
+
+    .cta-section p {
+      font-size: 1.25rem;
+      /* text-xl */
+      margin-bottom: 2rem;
+      /* mb-8 */
+      opacity: 0.9;
+    }
+
+    @media (min-width: 640px) {
+      .cta-section p {
+        font-size: 1.5rem;
+        /* sm:text-2xl */
+      }
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+      /* space-y-4 */
+    }
+
+    @media (min-width: 640px) {
+      .cta-buttons {
+        flex-direction: row;
+        gap: 1.5rem;
+        /* sm:space-x-6 */
+      }
+    }
+
+    .cta-button {
+      background-color: #ef4444;
+      color: white;
+      font-weight: 700;
+      /* font-bold */
+      padding: 0.875rem 2.5rem;
+      /* py-3.5 px-10 */
+      border-radius: 9999px;
+      /* rounded-full */
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      /* shadow-lg */
+      transition: all 0.3s ease-in-out;
+      transform: scale(1);
+      outline: none;
+      cursor: pointer;
+      font-size: 1.125rem;
+      /* text-lg */
+    }
+
+    .cta-button:hover {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      /* hover:shadow-xl */
+      transform: scale(1.05);
+    }
+
+    .cta-button:focus {
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.5), 0 0 0 4px rgba(254, 202, 202, 0.5);
+      /* ring-2 ring-red-300 ring-offset-2 */
+    }
+
+    .cta-link {
+      color: #4a5568;
+      /* text-gray-700 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.125rem;
+      /* text-lg */
+      text-decoration: underline;
+    }
+
+    .cta-link:hover {
+      color: #1a202c;
+      /* hover:text-gray-900 */
+    }
+
+    .cta-link svg {
+      margin-left: 0.5rem;
+      /* ml-2 */
+    }
+
+    /* Footer Section */
+    footer {
+      background-color: #2d3748;
+      /* bg-gray-800 */
+      color: #a0aec0;
+      /* text-gray-300 */
+      padding-top: 2.5rem;
+      /* py-10 */
+      padding-bottom: 2.5rem;
+      border-top: 1px solid #4a5568;
+      /* border-t border-gray-700 */
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: 2rem;
+      /* gap-8 */
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    footer h3 {
+      font-size: 1.25rem;
+      /* text-xl */
+      font-weight: 700;
+      /* font-bold */
+      color: #ffffff;
+      margin-bottom: 1rem;
+      /* mb-4 */
+    }
+
+    footer p,
+    footer ul {
+      font-size: 0.875rem;
+      /* text-sm */
+    }
+
+    footer ul li {
+      margin-bottom: 0.5rem;
+      /* space-y-2 on ul */
+    }
+
+    footer ul a {
+      transition: color 0.15s ease-in-out;
+    }
+
+    footer ul a:hover {
+      color: #f87171;
+      /* hover:text-red-400 */
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      /* space-x-4 */
+    }
+
+    .social-links a {
+      color: #a0aec0;
+      /* text-gray-400 */
+      transition: color 0.15s ease-in-out;
+    }
+
+    .social-links a:hover {
+      color: #ffffff;
+    }
+
+    .social-links svg {
+      height: 1.5rem;
+      /* h-6 */
+      width: 1.5rem;
+      /* w-6 */
+    }
+
+    .copyright {
+      border-top: 1px solid #4a5568;
+      /* border-t border-gray-700 */
+      margin-top: 2rem;
+      /* mt-8 */
+      padding-top: 1.5rem;
+      /* pt-6 */
+      text-align: center;
+      font-size: 0.875rem;
+      /* text-sm */
+      color: #a0aec0;
+      /* text-gray-500 */
+    }
+
+    /* Scroll to Top Button */
+    #scrollToTopBtn {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Fixed position */
+      bottom: 20px;
+      /* Place at the bottom */
+      right: 20px;
+      /* Place at the right */
+      z-index: 99;
+      /* High z-index to be on top */
+      background-color: #ef4444;
+      /* Match the red button color */
+      color: white;
+      /* White text */
+      border: none;
+      border-radius: 50%;
+      /* Circular button */
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      /* Lighter shadow */
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    #scrollToTopBtn:hover {
+      background-color: #dc2626;
+      /* Slightly darker on hover */
+      transform: translateY(-3px);
+    }
+
+    /* Message Box for demo */
+    .message-box {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      z-index: 100;
+      text-align: center;
+    }
+
+    .message-box p {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #2d3748;
+    }
+
+    .message-box button {
+      background-color: #ef4444;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .message-box button:hover {
+      background-color: #dc2626;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container">
+      <div class="logo">
+        <a href="#">
+          <span class="text-red">Paws</span>&<span class="text-gray">Claws</span>
+        </a>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" placeholder="Search for anything...">
+        <div class="search-icon">
+          <i data-lucide="search"></i>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <a href="#" class="nav-link">
+          <i data-lucide="map-pin"></i>
+          <span>Location</span>
+        </a>
+        <a href="#" class="nav-link">
+          <i data-lucide="shopping-cart"></i>
+        </a>
+        <a href="#" class="nav-link">
+          <i data-lucide="user"></i>
+        </a>
+        <button class="signup-button">
+          Sign Up / Log In
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>
+          Find Your New Best Friend Today
+        </h1>
+        <p>
+          Connecting pet lovers with their ideal companions and essential supplies seamlessly.
+        </p>
+        <div class="hero-buttons">
+          <button class="hero-cta red-button" data-action="find-pet">
+            Explore Pets
+          </button>
+          <button class="hero-cta gray-button" data-action="sell-product">
+            Become a Seller
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="container category-section">
+      <h2>Discover Our Categories</h2>
+      <div class="category-grid">
+        <div class="category-card">
+          <div class="card-icon-wrapper">
+            <i data-lucide="heart"></i>
+          </div>
+          <img src="https://placehold.co/350x180/eff7fb/444?text=Adorable%20Pets" alt="Pets" class="card-image">
+          <h3>Pets</h3>
+          <p>Find your ideal companion, from playful puppies to exotic birds.</p>
+          <button class="category-button">
+            Browse Pets
+          </button>
+        </div>
+
+        <div class="category-card">
+          <div class="card-icon-wrapper">
+            <i data-lucide="tag"></i>
+          </div>
+          <img src="https://placehold.co/350x180/e6e6e6/444?text=Stylish%20Accessories" alt="Accessories"
+            class="card-image">
+          <h3>Pet Accessories</h3>
+          <p>Explore a wide range of toys, collars, beds, and grooming essentials.</p>
+          <button class="category-button">
+            Shop Accessories
+          </button>
+        </div>
+
+        <div class="category-card">
+          <div class="card-icon-wrapper">
+            <i data-lucide="pizza"></i>
+          </div>
+          <img src="https://placehold.co/350x180/fffbe0/444?text=Nutritious%20Food" alt="Pet Food" class="card-image">
+          <h3>Pet Food</h3>
+          <p>Premium food brands and diet options for your pet's health and happiness.</p>
+          <button class="category-button">
+            Buy Food
+          </button>
+        </div>
+
+        <div class="category-card">
+          <div class="card-icon-wrapper">
+            <i data-lucide="syringe"></i>
+          </div>
+          <img src="https://placehold.co/350x180/f7eefc/444?text=Expert%20Pet%20Care" alt="Pet Care" class="card-image">
+          <h3>Pet Care</h3>
+          <p>Connect with vets, groomers, and trainers for the best care.</p>
+          <button class="category-button">
+            Find Pet Services
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-it-works-section">
+      <div class="container text-center">
+        <h2>How It Works</h2>
+        <div class="how-it-works-grid">
+          <div class="how-it-works-item">
+            <div class="how-it-works-icon-wrapper">
+              <i data-lucide="mouse-pointer-2"></i>
+            </div>
+            <h3>1. Browse & Discover</h3>
+            <p>Explore a vast selection of pets and products from trusted sellers.</p>
+          </div>
+          <div class="how-it-works-item">
+            <div class="how-it-works-icon-wrapper">
+              <i data-lucide="message-square"></i>
+            </div>
+            <h3>2. Connect Directly</h3>
+            <p>Chat with sellers, ask questions, and arrange purchase details.</p>
+          </div>
+          <div class="how-it-works-item">
+            <div class="how-it-works-icon-wrapper">
+              <i data-lucide="home"></i>
+            </div>
+            <h3>3. Welcome Home</h3>
+            <p>Seamlessly complete your transaction and enjoy your new pet or product.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonial-section">
+      <div class="container text-center">
+        <h2>Hear From Our Happy Customers</h2>
+        <div class="testimonial-wrapper">
+          <div class="testimonial-carousel">
+            <div class="testimonial-container" id="testimonialContainer">
+              <div class="testimonial-item">
+                <p>
+                  "Paws & Claws made finding my new rescue dog a joyous and incredibly efficient experience. The sellers
+                  were genuine, and the communication was seamless. Highly recommend to all pet lovers!"
+                </p>
+                <div class="stars">
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                </div>
+                <p class="author">- Maya S., Pet Parent</p>
+              </div>
+              <div class="testimonial-item">
+                <p>
+                  "As a small breeder, Paws & Claws has revolutionized how I connect with potential pet owners. The
+                  platform is intuitive, and I've been able to find wonderful homes for my puppies much faster."
+                </p>
+                <div class="stars">
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star" class="empty-star"></i>
+                </div>
+                <p class="author">- John D., Verified Seller</p>
+              </div>
+              <div class="testimonial-item">
+                <p>
+                  "No more wasting time driving to multiple pet stores! I found the exact brand of specialized cat food
+                  I needed within minutes on Paws & Claws. A true time-saver!"
+                </p>
+                <div class="stars">
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                </div>
+                <p class="author">- Sarah L., Pet Supply Buyer</p>
+              </div>
+            </div>
+          </div>
+          <button id="prevBtn" class="carousel-button">
+            <i data-lucide="chevron-left"></i>
+          </button>
+          <button id="nextBtn" class="carousel-button">
+            <i data-lucide="chevron-right"></i>
+          </button>
+          <div class="carousel-indicators" id="carouselIndicators">
+            <span class="carousel-indicator" data-slide="0"></span>
+            <span class="carousel-indicator" data-slide="1"></span>
+            <span class="carousel-indicator" data-slide="2"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to Find Your Companion?</h2>
+        <p>Join Paws & Claws today and simplify your pet journey.</p>
+        <div class="cta-buttons">
+          <button class="cta-button">
+            Get Started Now!
+          </button>
+          <a href="#" class="cta-link">
+            Learn More <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h3>Paws & Claws</h3>
+        <p>Your trusted marketplace for connecting pet lovers with their ideal companions and essential supplies. We're
+          dedicated to simplifying your pet journey.</p>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">How It Works</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Categories</h3>
+        <ul>
+          <li><a href="#">Pets for Adoption</a></li>
+          <li><a href="#">Pet Food & Treats</a></li>
+          <li><a href="#">Accessories & Toys</a></li>
+          <li><a href="#">Pet Care Services</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Connect With Us</h3>
+        <p>Email: <a href="mailto:info@pawsandclaws.com">info@pawsandclaws.com</a></p>
+        <div class="social-links">
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="twitter"></i></a>
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Paws & Claws. All rights reserved. | Designed with ❤️
+    </div>
+  </footer>
+
+  <button id="scrollToTopBtn" aria-label="Scroll to top">
+    <i data-lucide="chevron-up"></i>
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize Lucide icons
+      lucide.createIcons();
+
+      console.log('Paws & Claws homepage fully loaded!');
+
+      // --- Hero CTA Buttons Interaction ---
+      const heroCTAs = document.querySelectorAll('.hero-cta');
+      heroCTAs.forEach(button => {
+        button.addEventListener('click', (event) => {
+          const action = event.target.dataset.action;
+          // Using a simple message box for demonstration.
+          const messageBox = document.createElement('div');
+          messageBox.classList.add('message-box');
+          messageBox.innerHTML = `
+                        <p>Action: ${action.replace('-', ' ').toUpperCase()} button clicked!</p>
+                        <button onclick="this.parentNode.remove()">OK</button>
+                    `;
+          document.body.appendChild(messageBox);
+        });
+      });
+
+      // --- Category Buttons Interaction ---
+      const categoryButtons = document.querySelectorAll('.category-button');
+      categoryButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+          const categoryText = event.target.textContent;
+          // Using a simple message box for demonstration.
+          const messageBox = document.createElement('div');
+          messageBox.classList.add('message-box');
+          messageBox.innerHTML = `
+                        <p>Navigating to: ${categoryText}</p>
+                        <button onclick="this.parentNode.remove()">OK</button>
+                    `;
+          document.body.appendChild(messageBox);
+        });
+      });
+
+      // --- Testimonial Carousel Logic ---
+      const testimonialContainer = document.getElementById('testimonialContainer');
+      const testimonialItems = document.querySelectorAll('.testimonial-item');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const indicatorsContainer = document.getElementById('carouselIndicators');
+      let currentIndex = 0;
+
+      const indicators = indicatorsContainer.querySelectorAll('span');
+
+      function updateCarousel() {
+        const itemWidth = testimonialItems[0].clientWidth;
+        testimonialContainer.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
+
+        indicators.forEach((indicator, index) => {
+          if (index === currentIndex) {
+            indicator.classList.add('active');
+          } else {
+            indicator.classList.remove('active');
+          }
+        });
+      }
+
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % testimonialItems.length;
+        updateCarousel();
+      });
+
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + testimonialItems.length) % testimonialItems.length;
+        updateCarousel();
+      });
+
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+          currentIndex = index;
+          updateCarousel();
+        });
+      });
+
+      updateCarousel();
+      window.addEventListener('resize', updateCarousel);
+
+      // --- Scroll to Top Button Logic ---
+      const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+      window.onscroll = function () {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          scrollToTopBtn.style.display = "flex";
+        } else {
+          scrollToTopBtn.style.display = "none";
+        }
+      };
+
+      scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

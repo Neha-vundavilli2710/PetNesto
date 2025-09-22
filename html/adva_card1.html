@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exotic Birds Sale - PetNesto</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+            padding: 0;
+            margin: 0;
+        }
+
+        .promo-container {
+            width: 100svw;
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 30%, #0984e3 70%, #6c5ce7 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            overflow: hidden;
+            min-width: 800px; /* Prevent shrinking */
+        }
+
+        /* Tropical background pattern */
+        .tropical-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.08;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.3'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: drift 25s ease-in-out infinite;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translateX(0px) translateY(0px) rotate(0deg); }
+            33% { transform: translateX(10px) translateY(-5px) rotate(1deg); }
+            66% { transform: translateX(-5px) translateY(10px) rotate(-1deg); }
+        }
+
+        .exotic-badge {
+            position: absolute;
+            top: 15px;
+            left: 50px;
+            background: linear-gradient(45deg, #fd79a8, #e84393);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 4px 20px rgba(232, 67, 147, 0.4);
+            animation: sparkle 3s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        .exotic-badge::before {
+            content: '✨';
+            margin-right: 6px;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg); 
+                box-shadow: 0 4px 20px rgba(232, 67, 147, 0.4);
+            }
+            50% { 
+                transform: scale(1.05) rotate(2deg); 
+                box-shadow: 0 6px 30px rgba(232, 67, 147, 0.6);
+            }
+        }
+
+        .content-section {
+            flex: 1;
+            z-index: 5;
+            padding-top: 25px;
+            min-width: 300px;
+        }
+
+        .main-heading {
+            font-size: 28px;
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 6px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            white-space: nowrap;
+        }
+
+        .sub-heading {
+            font-size: 15px;
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+            margin-bottom: 18px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            white-space: nowrap;
+        }
+
+        .bird-info-card {
+            background: rgba(255,255,255,0.95);
+            padding: 14px 18px;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.3);
+            max-width: 280px;
+        }
+
+        .bird-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #fd79a8, #fdcb6e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(253, 121, 168, 0.3);
+            animation: gentle-pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes gentle-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        .bird-details {
+            color: #2d3436;
+        }
+
+        .bird-name {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .bird-desc {
+            font-size: 12px;
+            color: #636e72;
+            font-weight: 500;
+        }
+
+        .parrot-showcase {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 6;
+            min-width: 200px;
+        }
+
+        .parrot-container img{
+          width: 400px;
+          height: 200px;
+          
+        }
+
+        /* Realistic Scarlet Macaw using CSS */
+        .macaw-bird {
+            width: 160px;
+            height: 160px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: bird-sway 4s ease-in-out infinite;
+        }
+
+        /* This is where you can replace with actual image */
+        .macaw-body {
+            width: 80px;
+            height: 120px;
+            background: linear-gradient(180deg, #e74c3c 0%, #c0392b 40%, #3498db 60%, #2980b9 100%);
+            border-radius: 40px 40px 20px 20px;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .macaw-head {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .macaw-beak {
+            width: 20px;
+            height: 15px;
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            border-radius: 0 0 50% 50%;
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .macaw-eye {
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 25px;
+            left: 35px;
+        }
+
+        .macaw-eye::after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #2c3e50;
+            border-radius: 50%;
+            position: absolute;
+            top: 3px;
+            left: 3px;
+        }
+
+        .macaw-wing {
+            width: 40px;
+            height: 70px;
+            background: linear-gradient(45deg, #3498db 0%, #e74c3c 50%, #f1c40f 100%);
+            border-radius: 20px;
+            position: absolute;
+            top: 30px;
+            right: -10px;
+            transform: rotate(20deg);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .macaw-tail {
+            width: 30px;
+            height: 80px;
+            background: linear-gradient(180deg, #3498db 0%, #e74c3c 50%, #f1c40f 100%);
+            border-radius: 15px;
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%) rotate(10deg);
+        }
+
+        @keyframes bird-sway {
+            0%, 100% { transform: translate(-50%, -50%) rotate(-2deg); }
+            50% { transform: translate(-50%, -50%) rotate(2deg); }
+        }
+
+        .perch {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 8px;
+            background: linear-gradient(90deg, #8b4513, #a0522d);
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .floating-feathers {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .feather {
+            position: absolute;
+            font-size: 16px;
+            opacity: 0.3;
+            animation: float-feather 12s ease-in-out infinite;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .feather-1 { top: 20%; left: 10%; animation-delay: 0s; }
+        .feather-2 { top: 60%; right: 15%; animation-delay: 4s; }
+        .feather-3 { top: 80%; left: 20%; animation-delay: 8s; }
+
+        @keyframes float-feather {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.6; }
+        }
+
+        .pricing-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            z-index: 5;
+            min-width: 240px;
+        }
+
+        .price-display {
+            background: rgba(255,255,255,0.95);
+            padding: 20px;
+            border-radius: 18px;
+            text-align: right;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.3);
+            margin-bottom: 16px;
+            min-width: 220px;
+        }
+
+        .original-price {
+            font-size: 15px;
+            color: #636e72;
+            text-decoration: line-through;
+            font-weight: 500;
+        }
+
+        .current-price {
+            font-size: 26px;
+            color: #e17055;
+            font-weight: 800;
+            margin: 6px 0;
+        }
+
+        .savings-badge {
+            background: linear-gradient(45deg, #00b894, #55a3ff);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .urgency-timer {
+            background: linear-gradient(135deg, #2d3436, #636e72);
+            color: white;
+            padding: 14px 18px;
+            border-radius: 14px;
+            text-align: center;
+            margin-bottom: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .timer-text {
+            font-size: 10px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+        .time-display {
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fd79a8;
+            text-shadow: 0 0 10px rgba(253, 121, 168, 0.5);
+        }
+
+        .purchase-btn {
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+            color: white;
+            border: none;
+            padding: 16px 36px;
+            border-radius: 10px;
+            font-size: 14.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            box-shadow: 0 8px 30px rgba(232, 67, 147, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .purchase-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.7s;
+        }
+
+        .purchase-btn:hover::before {
+            left: 100%;
+        }
+
+        .purchase-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(232, 67, 147, 0.6);
+        }
+
+        .purchase-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Responsive design - Mobile first approach */
+        @media (max-width: 1024px) {
+            .promo-container {
+                overflow-x: auto;
+                overflow-y: hidden;
+            }
+            
+            .promo-banner {
+                min-width: 900px; /* Ensure content doesn't get too squished */
+                padding: 0 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .promo-container {
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .promo-banner { 
+                min-width: 800px;
+                padding: 0 25px;
+            }
+            
+            .exotic-badge {
+                left: 25px;
+                font-size: 11px;
+                padding: 6px 14px;
+            }
+            
+            .main-heading { 
+                font-size: 24px; 
+            }
+            
+            .sub-heading {
+                font-size: 14px;
+            }
+            
+            .parrot-container { 
+                width: 180px; 
+                height: 180px; 
+            }
+            
+            .macaw-bird { 
+                width: 140px; 
+                height: 140px; 
+            }
+            
+            .price-display { 
+                min-width: 200px; 
+                padding: 16px; 
+            }
+            
+            .current-price {
+                font-size: 24px;
+            }
+            
+            .purchase-btn {
+                padding: 14px 30px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .promo-banner {
+                min-width: 750px;
+                padding: 0 20px;
+            }
+            
+            .main-heading {
+                font-size: 22px;
+            }
+            
+            .parrot-container {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .macaw-bird {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .price-display {
+                min-width: 180px;
+                padding: 14px;
+            }
+            
+            .current-price {
+                font-size: 22px;
+            }
+        }
+
+        /* Scroll indicator for mobile */
+        @media (max-width: 1024px) {
+            .promo-container::after {
+                content: '';
+                position: absolute;
+                bottom: 5px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 60px;
+                height: 4px;
+                background: rgba(255,255,255,0.3);
+                border-radius: 2px;
+                animation: scroll-hint 2s ease-in-out infinite;
+            }
+        }
+
+        @keyframes scroll-hint {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+    </style>
+</head>
+<body>
+    <div class="promo-container">
+        <div class="promo-banner">
+            <div class="tropical-pattern"></div>
+            
+            <div class="exotic-badge">Exotic Birds</div>
+            
+            <div class="floating-feathers">
+                <div class="feather feather-1">🪶</div>
+                <div class="feather feather-2">🪶</div>
+                <div class="feather feather-3">🪶</div>
+            </div>
+            
+            <div class="content-section">
+                <h1 class="main-heading">Majestic Scarlet<br>Macaw Available</h1>
+                <p class="sub-heading">Hand-raised, healthy & ready for loving homes</p>
+                <div class="bird-info-card">
+                    <div class="bird-icon">🦜</div>
+                    <div class="bird-details">
+                        <div class="bird-name">Scarlet Macaw Pair</div>
+                        <div class="bird-desc">6 months old • Health certified</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="parrot-showcase">
+                <div class="parrot-container">
+                    <img src="../assests/parrotgroup-removebg-preview.png" alt="Scarlet Macaw" class="macaw-image">
+                    <!-- <div class="macaw-bird">
+                        <div class="macaw-head">
+                            <div class="macaw-eye"></div>
+                            <div class="macaw-beak"></div>
+                        </div>
+                        <div class="macaw-body"></div>
+                        <div class="macaw-wing"></div>
+                        <div class="macaw-tail"></div>
+                    </div>
+                    <div class="perch"></div>
+                </div> -->
+            </div>
+            
+            <div class="pricing-section">
+                <div class="price-display">
+                    <div class="original-price">₹89,999</div>
+                    <div class="current-price">₹69,999</div>
+                    <div class="savings-badge">Save ₹20,000</div>
+                </div>
+                
+                <!-- <div class="urgency-timer">
+                    <div class="timer-text">Limited Offer Ends</div>
+                    <div class="time-display" id="countdown">72:00:00</div>
+                </div> -->
+                
+                <button class="purchase-btn" onclick="inquireNow()">
+                    Deal of the day
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Professional countdown timer
+        function startCountdown() {
+            const display = document.getElementById('countdown');
+            let totalSeconds = 72 * 3600; // 72 hours
+            
+            function updateDisplay() {
+                const hours = Math.floor(totalSeconds / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+                
+                display.textContent = 
+                    `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (totalSeconds > 0) {
+                    totalSeconds--;
+                } else {
+                    display.textContent = "EXPIRED";
+                    display.style.color = "#e74c3c";
+                }
+            }
+            
+            updateDisplay();
+            setInterval(updateDisplay, 1000);
+        }
+        
+        function inquireNow() {
+            const btn = document.querySelector('.purchase-btn');
+            btn.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                btn.style.transform = '';
+                alert('Opening inquiry form for Scarlet Macaw...\n\nFeatures:\n• Hand-raised & socialized\n• Health certificate included\n• 6 months old\n• Breeding pair available\n• Free consultation included');
+                // Add your actual inquiry/contact logic here
+            }, 200);
+        }
+        
+        // Add realistic parrot sounds effect (optional)
+        function playParrotSound() {
+            // You can add actual audio here
+            console.log('🦜 Squawk! Scarlet Macaw calling...');
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            startCountdown();
+            
+            // Add interactive parrot click
+            const parrot = document.querySelector('.macaw-bird');
+            if (parrot) {
+                parrot.addEventListener('click', playParrotSound);
+                parrot.style.cursor = 'pointer';
+            }
+        });
+    </script>
+</body>
+</html>

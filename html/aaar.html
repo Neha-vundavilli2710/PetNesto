@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetNesto - Notifications</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0b0d18;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .nav-icons i {
+            font-size: 20px;
+            color: #0b0d18;
+            cursor: pointer;
+        }
+
+        .notifyicon {
+            font-size: 24px;
+            color: #0b0d18;
+            cursor: pointer;
+            position: relative; /* Needed for positioning the dropdown */
+        }
+
+        /* Notification Dropdown Styles */
+        .notification-dropdown {
+            position: absolute;
+            top: 60px; /* Adjust based on your header height */
+            right: 20px;
+            width: 300px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: none; /* Hidden by default */
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .notification-header {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            background-color: #f9f9f9;
+        }
+
+        .notification-header h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .notification-card {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            gap: 10px;
+        }
+
+        .notification-card:last-child {
+            border-bottom: none;
+        }
+
+        .notification-item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+            flex-shrink: 0;
+        }
+
+        .notification-content {
+            flex-grow: 1;
+        }
+
+        .notification-title {
+            margin: 0;
+            font-weight: bold;
+            color: #333;
+            font-size: 15px;
+        }
+
+        .notification-message {
+            margin: 5px 0 0;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .notification-link {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 12px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .notification-link:hover {
+            text-decoration: underline;
+        }
+
+        .notification-footer {
+            padding: 10px 15px;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+
+        .notification-see-all {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .notification-see-all:hover {
+            text-decoration: underline;
+        }
+
+        /* Main content area for demonstration purposes */
+        .main-content {
+            padding: 20px;
+            text-align: center;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-section">
+        <div class="logo">PetNesto</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Explore pets, pet food, accesories, petCare.....">
+        </div>
+        <div class="nav-icons">
+            <i class="fa-solid fa-location-dot"></i> Select Location
+            <i class="fa-regular fa-heart"></i> 0
+            <div class="notifyicon letterspacing">
+                <i class="fa-regular fa-bell" id="notificationBell"></i>
+            </div>
+            <i class="fa-solid fa-user-circle"></i> Profile
+        </div>
+    </div>
+
+    <div class="notification-dropdown" id="notificationDropdown">
+        <div class="notification-header">
+            <h3>Notifications</h3>
+        </div>
+        <div class="notification-card">
+            <img src="../assests/dup_pets/bird1.jpg" alt="Item 1" class="notification-item-image">
+            <div class="notification-content">
+                <p class="notification-title">Royal Canin Dog Food</p>
+                <p class="notification-message">Your requested item is back in stock!</p>
+                <a href="../html/food.html" class="notification-link">View Item</a>
+            </div>
+        </div>
+        <div class="notification-card">
+            <img src="https://via.placeholder.com/60/33FF57/FFFFFF?text=Cat+Toy" alt="Item 2" class="notification-item-image">
+            <div class="notification-content">
+                <p class="notification-title">Feather Wand Cat Toy</p>
+                <p class="notification-message">Good news! Feather Wand Cat Toy is now available.</p>
+                <a href="#" class="notification-link">View Item</a>
+            </div>
+        </div>
+        <div class="notification-card">
+            <img src="https://via.placeholder.com/60/3357FF/FFFFFF?text=Fish+Tank" alt="Item 3" class="notification-item-image">
+            <div class="notification-content">
+                <p class="notification-title">Aquarium Starter Kit</p>
+                <p class="notification-message">Aquarium Starter Kit you wanted is back!</p>
+                <a href="#" class="notification-link">View Item</a>
+            </div>
+        </div>
+        <div class="notification-footer">
+            <a href="#" class="notification-see-all">See All Notifications</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <h1>Welcome to PetNesto!</h1>
+        <p>Explore our wide range of pet products and accessories.</p>
+        </div>
+
+    <script>
+        document.getElementById('notificationBell').addEventListener('click', function() {
+            var dropdown = document.getElementById('notificationDropdown');
+            if (dropdown.style.display === 'none') {
+                dropdown.style.display = 'block';
+            } else {
+                dropdown.style.display = 'none';
+            }
+        });
+
+        // Optional: Close dropdown if clicked outside
+        window.addEventListener('click', function(event) {
+            var dropdown = document.getElementById('notificationDropdown');
+            var bellIcon = document.getElementById('notificationBell');
+            if (!bellIcon.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>

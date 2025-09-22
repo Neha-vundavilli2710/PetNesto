@@ -1,0 +1,30 @@
+.img1 {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 0;
+}
+/* Small devices (phones) */
+@media (min-width:0px) and (max-width:425px) {
+  .img1 {
+    height: 60vh;
+    object-fit: cover;
+  }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 426px) and (max-width: 768px) {
+  .img1 {
+    height: 70vh;
+    object-fit: cover;
+  }
+}
+
+/* Large devices (desktops) */
+@media (min-width: 1025px) {
+  .img1 {
+    height: 80vh;
+    object-fit: cover;
+  }
+}

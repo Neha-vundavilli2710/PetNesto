@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deals Slider</title>
+  <link rel="stylesheet" href="../css/product_promo.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <!-- advatise -->
+  <div class="advatise-container">
+    <!-- Navigation Arrows -->
+    <button class="nav-btn left" onclick="prevSlide()">&#10094;</button>
+
+    <!-- Slides -->
+    <div class="advatise-track">
+      <div class="slide">
+        <div class="promo-container">
+          <div class="promo-banner">
+            <div class="tropical-pattern"></div>
+
+            <div class="exotic-badge">Exotic Birds</div>
+
+            <div class="floating-feathers">
+              <div class="feather feather-1">🪶</div>
+              <div class="feather feather-2">🪶</div>
+              <div class="feather feather-3">🪶</div>
+            </div>
+
+            <div class="content-section">
+              <h1 class="main-heading">Majestic Scarlet<br>Macaw Available</h1>
+              <p class="sub-heading">Hand-raised, healthy & ready for loving homes</p>
+              <div class="bird-info-card">
+                <div class="bird-icon">🦜</div>
+                <div class="bird-details">
+                  <div class="bird-name">Scarlet Macaw Pair</div>
+                  <div class="bird-desc">6 months old • Health certified</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="parrot-showcase">
+              <div class="parrot-container">
+                <!-- <img src="../assests/mascaw.png" alt="Scarlet Macaw" class="macaw-image"> -->
+                <div class="macaw-bird">
+                  <div class="macaw-head">
+                    <div class="macaw-eye"></div>
+                    <div class="macaw-beak"></div>
+                  </div>
+                  <div class="macaw-body"></div>
+                  <div class="macaw-wing"></div>
+                  <div class="macaw-tail"></div>
+                </div>
+                <div class="perch"></div>
+              </div>
+            </div>
+
+            <div class="pricing-section">
+              <div class="price-display">
+                <div class="original-price">₹89,999</div>
+                <div class="current-price">₹69,999</div>
+                <div class="savings-badge">Save ₹20,000</div>
+              </div>
+
+              <div class="urgency-timer">
+                <div class="timer-text">Limited Offer Ends</div>
+                <div class="time-display" id="countdown">72:00:00</div>
+              </div>
+
+              <button class="purchase-btn" onclick="inquireNow()">
+                🦜 Inquire Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="deal-container">
+          <div class="deal-card">
+            <div class="decorative-paw">🐾</div>
+            <div class="decorative-bone">🦴</div>
+
+            <div class="left-section">
+              <div class="deal-badge">Deal of the Day</div>
+              <h2 class="deal-title">Premium Dog Food</h2>
+              <p class="deal-subtitle">Limited time offer - Don't miss out!</p>
+            </div>
+
+            <div class="center-section">
+              <div class="product-section">
+                <div class="product-info">
+                  <div class="dog-image">🐕</div>
+                  <div class="product-details">
+                    <h3>Royal Canin Adult Dog Food</h3>
+                    <p>High-quality nutrition for adult dogs</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="right-section">
+              <div class="price-section">
+                <span class="original-price">₹2,499</span>
+                <span class="sale-price">₹1,799</span>
+                <span class="discount">30% OFF</span>
+              </div>
+
+              <div class="timer">
+                <div class="timer-label">Offer ends in:</div>
+                <div class="timer-display" id="countdown">23:45:12</div>
+              </div>
+
+              <button class="cta-button" onclick="handlePurchase()">
+                Shop Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="promo-card">
+          <div class="left-section">
+            <div class="deal-badge">Deal of the Day</div>
+            <h1 class="main-title">Premium Dog Grooming</h1>
+            <p class="subtitle">Professional care - Book today!</p>
+          </div>
+
+          <div class="center-section">
+            <div class="image-container">
+              <div class="dummy-image"></div>
+            </div>
+            <h3 class="service-title">Full Grooming Package</h3>
+            <p class="service-subtitle">Bath, trim, nail care & more</p>
+          </div>
+
+          <div class="right-section">
+            <div class="price-section">
+              <div class="original-price">₹2,499</div>
+              <div class="current-price">₹1,799</div>
+            </div>
+            <div class="discount-badge">30% OFF</div>
+            <div class="timer">Offer ends in:</div>
+            <div class="time-boxes">
+              <div class="time-box">
+                <span class="time-number" id="days">06</span>
+                <span class="time-label">Days</span>
+              </div>
+              <div class="time-box">
+                <span class="time-number" id="hours">23</span>
+                <span class="time-label">Hrs</span>
+              </div>
+              <div class="time-box">
+                <span class="time-number" id="minutes">45</span>
+                <span class="time-label">Min</span>
+              </div>
+              <div class="time-box">
+                <span class="time-number" id="seconds">32</span>
+                <span class="time-label">Sec</span>
+              </div>
+            </div>
+            <button class="cta-button">Book Now</button>
+          </div>
+        </div>
+
+      </div>
+      <div class="slide" style="background-color: #2ecc71;">
+        <h2>Deal 4: Dining Sets from ₹14,499</h2>
+      </div>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <button class="nav-btn right" onclick="nextSlide()">&#10095;</button>
+
+    <!-- Progress Bar Indicators -->
+    <div class="progress-indicators">
+      <div class="progress-bar"></div>
+      <div class="progress-bar"></div>
+      <div class="progress-bar"></div>
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+</body>
+
+</html>

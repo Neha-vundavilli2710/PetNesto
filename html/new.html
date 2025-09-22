@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PetNesto</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-y...==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../css/new.css"/>
+</head>
+
+<body>
+  <header class="nav-bar">
+  <div class="navbar-container">
+    <div class="logo">Pet<span class="highlight">Nesto</span></div>
+
+    <div class="explore">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" placeholder="Explore pets, pet food, accessories, petCare......." />
+    </div>
+
+    <div class="location">
+      <i class="fas fa-map-marker-alt location-icon"></i>
+      <input type="text" placeholder="Select Location" />
+    </div>
+
+    <div class="nav-items">
+      <div class="home">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </div>
+      <div class="wishlist">
+        <a href="#"><i class="fa-regular fa-heart"></i><span>Wishlist</span></a>
+      </div>
+      <div class="notifyicon">
+        <i class="fa-regular fa-bell"></i>
+      </div>
+      <div class="profile">
+        <a href="#"><i class="fa-regular fa-user"></i><span>Profile</span></a>
+      </div>
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="menu-item">Location</div>
+    <div class="menu-item">Home</div>
+    <div class="menu-item">Wishlist</div>
+    <div class="menu-item">Notifications</div>
+    <div class="menu-item">Profile</div>
+  </div>
+</header>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.classList.toggle("show");
+    }
+  </script>
+</body>
+
+</html>

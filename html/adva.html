@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deals Slider</title>
+  <link rel="stylesheet" href="../css/adva.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <header>
+    <nav class="nav_container">
+      <div class="left_nav">
+        <div class="logo_hamburger">
+          <div class="logo">Pet<span class="highlight">Nesto</span>
+            <span class="hamburger" onclick="openSidebar()">
+              <i class="fas fa-bars"></i>
+            </span>
+            <div class="side-bar" id="sidebar">
+              <span onclick="closeSidebar()" id="icon">&times;</span>
+              <label><input type="checkbox" onclick="redirectToPage(this, 'all.html')"> Location</label>
+              <label><input type="checkbox" onclick="redirectToPage(this, 'dog.html')"> Home</label>
+              <label><input type="checkbox" onclick="redirectToPage(this, 'cat.html')"> Wishlist</label>
+              <label><input type="checkbox" onclick="redirectToPage(this, 'fish.html')"> Notification</label>
+              <label><input type="checkbox" onclick="redirectToPage(this, 'bird.html')"> Profile</label>
+              <!-- <label><input type="checkbox" onclick="redirectToPage(this, 'hamster.html')"> Hamster</label>
+              <label><input type="checkbox" onclick="redirectToPage(this, 'turtle.html')"> Turtle</label>
+              <label><input type="checkbox" onclick="redirectToPage(this, 'rabbit.html')"> Rabbit</label> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="middle_nav">
+        <!-- search bar -->
+        <div class="explore">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" placeholder="Explore pets, pet food, accsories, petCare......." />
+        </div>
+      </div>
+      <div class="right_nav">
+        <!-- location -->
+        <div class="location">
+          <i class="fas fa-map-marker-alt location-icon"></i>
+          <input type="text" placeholder="Select Location" />
+        </div>
+        <!-- home -->
+        <div class="home letterspacing">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </div>
+        <!-- wishlist -->
+        <div class="wishlist letterspacing">
+          <a href="#">
+            <i class="fa-regular fa-heart"></i>
+            <span>Wishlist</span>
+          </a>
+        </div>
+        <!-- Notification -->
+        <div class="notifyicon letterspacing">
+          <i class="fa-regular fa-bell"></i>
+        </div>
+        <!-- profile -->
+        <div class="profile letterspacing">
+          <a href="../html/profile.html ">
+            <i class="fa-regular fa-user"></i>
+            <span>Profile</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- advatise -->
+ <div class="carousel-container">
+    <!-- Navigation Arrows -->
+    <button class="nav-btn left" onclick="prevSlide()">&#10094;</button>
+
+    <!-- Slides -->
+    <div class="carousel-track">
+      <div class="slide">
+        <img src="../assests/promo_card1.png" alt="cracked">
+      </div>
+      <div class="slide">
+        <img src="../assests/promo_card2.png" alt="cracked">
+      </div>
+      <div class="slide" >
+        <img src="../assests/promo_card3.png" alt="cracked">
+      </div>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <button class="nav-btn right" onclick="nextSlide()">&#10095;</button>
+
+    <!-- Progress Bar Indicators -->
+    <div class="progress-indicators">
+      <div class="progress-bar"></div>
+      <div class="progress-bar"></div>
+      <div class="progress-bar"></div>
+      <!-- <div class="progress-bar"></div> -->
+    </div>
+  </div>
+
+  <!-- categories -->
+  <section class="categories-section">
+    <div class="categories_content">
+      <div class="categories_heading">
+        <h2>Discover Our Categories</h2>
+      </div>
+      <div class="category_grid">
+        <div class="category_card">
+          <div class="card_content">
+            <div class="card_content_img">
+              <img src="../assests/welcome_img2.png" alt="Pets" class="card_img">
+            </div>
+            <div class="card_subcontent">
+              <h3>Pets</h3>
+              <p>Find your ideal companion, from playful puppies to brexotic birds.</p>
+              <button class="category_button">Browse Pets</button>
+            </div>
+          </div>
+        </div>
+        <div class="category_card">
+          <div class="card_content">
+            <div class="card_content_img">
+              <img src="../assests/dup_food/cat.jpeg" alt="Pets" class="card_img">
+            </div>
+            <div class="card_subcontent">
+              <h3>Pet Food</h3>
+              <p>Premium food brands and diet options for your pet's health and happiness.</p>
+              <button class="category_button">Browse Food</button>
+            </div>
+          </div>
+        </div>
+        <div class="category_card">
+          <div class="card_content">
+            <div class="card_content_img">
+              <img src="../assests/dup_accessories/cat1.jpg" alt="Pets" class="card_img">
+            </div>
+            <div class="card_subcontent">
+              <h3>Pet Accessories</h3>
+              <p>Explore a wide range of toys, collars, beds, and grooming essentials.</p>
+              <button class="category_button">Browse Accessories</button>
+            </div>
+          </div>
+        </div>
+        <div class="category_card">
+          <div class="card_content">
+            <div class="card_content_img">
+              <img src="../assests/pet_care.jpg" alt="Pets" class="card_img">
+            </div>
+            <div class="card_subcontent">
+              <h3>Pet Care</h3>
+              <p>Connect with vets, groomers, and trainers for the best care.</p>
+              <button class="category_button">Browse Services</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- happy customers -->
+  <section class="carousel-section">
+    <h2><span class="highlight">5000+</span> Happy Pet Owners</h2>
+    <p>have found their perfect companion or service on PetNesto</p>
+
+    <div class="carousel-wrapper">
+      <div class="carousel-track">
+        <!-- Original Set -->
+        <div class="card"><img src="../assests/dup_pets/dog2.jpg" alt="Pet1">
+          <p>Rakesh - Adopted Golden Retriever</p>
+        </div>
+        <div class="card"><img src="../assests/dup_food/cat.jpeg" alt="Pet2">
+          <p>Sneha - Bought Persian Cat Food</p>
+        </div>
+        <div class="card"><img src="../assests/dup_accessories/bird_caze.jpg" alt="Pet3">
+          <p>Vikram - Bought a cage through PetNesto</p>
+        </div>
+        <div class="card"><img src="../assests/dup_accessories/dog1.jpg" alt="Pet4">
+          <p>Diya - Got Dog Accessories</p>
+        </div>
+        <div class="card"><img src="../assests/dup_pets/dog3.jpg" alt="Pet5">
+          <p>Arjun - Found a dog Shih Tzu</p>
+        </div>
+
+        <!-- Duplicate Set for infinite scroll -->
+        <div class="card"><img src="../assests/dup_pets/dog2.jpg" alt="Pet6">
+          <p>Kishor - Adopted Golden Retriever</p>
+        </div>
+        <div class="card"><img src="../assests/dup_food/cat.jpeg" alt="Pet7">
+          <p>Priya - Bought Persian Cat Food</p>
+        </div>
+        <div class="card"><img src="../assests/dup_accessories/bird_caze.jpg" alt="Pet8">
+          <p>Karan - Bought a cage through PetNesto</p>
+        </div>
+        <div class="card"><img src="../assests/dup_accessories/dog1.jpg" alt="Pet9">
+          <p>Megha - Got Dog Accessories</p>
+        </div>
+        <div class="card"><img src="../assests/dup_pets/dog3.jpg" alt="Pet10">
+          <p>Sahil - Found a dog Shih Tzu</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer_grid">
+      <div class="footer_card">
+        <div class="footer_card_content">
+          <h2>PetNesto</h2>
+          <p>Your trusted marketplace for connecting pet lovers with their ideal companions and essential
+            supplies. We're dedicated to simplifying your pet journey.</p>
+        </div>
+      </div>
+      <div class="footer_card">
+        <div class="footer_card_content">
+          <h2>Quick Links</h2>
+          <div class="quick_links_content">
+            <div>About us</div>
+            <div>How it Works</div>
+            <div>FAQ</div>
+            <div>Blog</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer_card">
+        <div class="footer_card_content">
+          <h2>Categories</h2>
+          <div class="foot_category_content">
+            <div>Pets for Adoption</div>
+            <div>Pet Food & Treats</div>
+            <div>Accessories & Toys</div>
+            <div>Pet Care Services</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer_card">
+        <div class="footer_card_content">
+          <h2>Connect With Us</h2>
+          <div class="contact_content">
+            <div class="mail">Email: info@PetNesto.com</div>
+          </div>
+          <div class="social_media_icons">
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer_bottom">
+      <p> © 2025 Paws & Claws. All rights reserved. | Designed with❤️</p>
+    </div>
+  </footer>
+  <script src="../js/sidebar.js"></script>
+</body>
+
+</html>
